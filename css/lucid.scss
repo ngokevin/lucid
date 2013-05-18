@@ -1,0 +1,94 @@
+@import 'globals';
+
+html {
+    background: $light-gray;
+    color: $black;
+}
+
+body {
+    background: $white;
+    border-radius: 2px;
+    height: 480px;
+    margin: 0 auto;
+    width: 320px;
+    text-align: center;
+}
+
+.btn {
+    &:hover {
+        background: $light-gray;
+        cursor: pointer;
+    }
+}
+
+.navbar {
+    background: $gray;
+    border-bottom: 1px solid $black;
+    margin-bottom: 32px;
+    padding-top: 8px;
+    position: relative;
+    h2 {
+        bottom: 4px;
+        color: $white;
+        display: inline;
+        font-weight: normal;
+        margin: 0;
+        position: relative;
+    }
+    .edit {
+        border-radius: 2px;
+        bottom: 4px;
+        height: 30px;
+        position: absolute;
+        right: 10px;
+        width: 30px;
+    }
+}
+
+.chart-filters {
+    margin: 0 auto;
+    height: 16px;
+    position: relative;
+    width: 300px;
+    .chart-tabs {
+        position: absolute;
+        right: -1px;
+        bottom: 4px;
+        span {
+            border-radius: 2px 2px 0 0;
+            border-top: 1px solid $black;
+            border-right: 1px solid $black;
+            border-left: 1px solid $black;
+            padding: 4px 8px;
+        }
+    }
+}
+
+.chart {
+    border: 1px $black solid;
+    height: 200px;
+    margin: 0 auto 16px auto;
+    width: 300px;
+}
+
+.chart-switches {
+    margin-bottom: 24px;
+    span {
+        border: 1px $black solid;
+        border-radius: 2px;
+        padding: 4px 8px;
+    }
+}
+
+.record {
+    border: 1px solid $black;
+    border-radius: 100px;
+    height: 120px;
+    margin: 0 auto;
+    text-align: center;
+    width: 120px;
+    span {
+        position: relative;
+        top: 50px;
+    }
+}

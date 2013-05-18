@@ -1,0 +1,76 @@
+html {
+  background: gainsboro;
+  color: #050505; }
+
+body {
+  background: whitesmoke;
+  border-radius: 2px;
+  height: 480px;
+  margin: 0 auto;
+  width: 320px;
+  text-align: center; }
+
+.btn:hover {
+  background: gainsboro;
+  cursor: pointer; }
+
+.navbar {
+  background: #6e6e6e;
+  border-bottom: 1px solid #050505;
+  margin-bottom: 32px;
+  padding-top: 8px;
+  position: relative; }
+  .navbar h2 {
+    bottom: 4px;
+    color: whitesmoke;
+    display: inline;
+    font-weight: normal;
+    margin: 0;
+    position: relative; }
+  .navbar .edit {
+    border-radius: 2px;
+    bottom: 4px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    width: 30px; }
+
+.chart-filters {
+  margin: 0 auto;
+  height: 16px;
+  position: relative;
+  width: 300px; }
+  .chart-filters .chart-tabs {
+    position: absolute;
+    right: -1px;
+    bottom: 4px; }
+    .chart-filters .chart-tabs span {
+      border-radius: 2px 2px 0 0;
+      border-top: 1px solid #050505;
+      border-right: 1px solid #050505;
+      border-left: 1px solid #050505;
+      padding: 4px 8px; }
+
+.chart {
+  border: 1px #050505 solid;
+  height: 200px;
+  margin: 0 auto 16px auto;
+  width: 300px; }
+
+.chart-switches {
+  margin-bottom: 24px; }
+  .chart-switches span {
+    border: 1px #050505 solid;
+    border-radius: 2px;
+    padding: 4px 8px; }
+
+.record {
+  border: 1px solid #050505;
+  border-radius: 100px;
+  height: 120px;
+  margin: 0 auto;
+  text-align: center;
+  width: 120px; }
+  .record span {
+    position: relative;
+    top: 50px; }
