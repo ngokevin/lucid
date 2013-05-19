@@ -1,26 +1,23 @@
 <!doctype html>
-<html>
+<html ng-app='LucidApp'>
   <head>
     <title>Lucid</title>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/lucid.css">
   </head>
   <body>
     <div class="navbar">
       <h2>Lucid</h2>
-      <span class="edit btn"><img src="img/edit.png"></span>
+      <span class="edit btn icon">
+        <a href="#/edit">
+          <img src="img/edit.png">
+        </a>
+      </span>
     </div>
-    <div class="chart-filters">
-      <div class="chart-tabs">
-        <span class="btn">Week</span>
-        <span class="btn">Month</span>
-        <span class="btn">All</span>
-      </div>
-    </div>
-    <div class="chart"></div>
-    <div class="chart-switches">
-      <span class="btn">Trends</span>
-      <span class="btn">Stats</span>
-    </div>
-    <div class="record btn"><span>Sleep</span></div>
+    <div ng-view></div>
   </body>
 </html>

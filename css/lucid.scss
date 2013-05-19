@@ -10,6 +10,7 @@ body {
     border-radius: 2px;
     height: 480px;
     margin: 0 auto;
+    position: relative;
     width: 320px;
     text-align: center;
 }
@@ -19,6 +20,18 @@ body {
         background: $light-gray;
         cursor: pointer;
     }
+}
+
+.icon {
+    border-radius: 2px;
+    height: 30px;
+    width: 30px;
+}
+
+.back {
+    left: 10px;
+    position: absolute;
+    top: 4px;
 }
 
 .navbar {
@@ -36,12 +49,9 @@ body {
         position: relative;
     }
     .edit {
-        border-radius: 2px;
         bottom: 4px;
-        height: 30px;
         position: absolute;
         right: 10px;
-        width: 30px;
     }
 }
 
@@ -90,5 +100,13 @@ body {
     span {
         position: relative;
         top: 50px;
+    }
+}
+
+.entry {
+    margin-bottom: 16px;
+    input {
+        display: inline-block;
+        width: 20%;
     }
 }

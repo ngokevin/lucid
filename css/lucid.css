@@ -7,12 +7,23 @@ body {
   border-radius: 2px;
   height: 480px;
   margin: 0 auto;
+  position: relative;
   width: 320px;
   text-align: center; }
 
 .btn:hover {
   background: gainsboro;
   cursor: pointer; }
+
+.icon {
+  border-radius: 2px;
+  height: 30px;
+  width: 30px; }
+
+.back {
+  left: 10px;
+  position: absolute;
+  top: 4px; }
 
 .navbar {
   background: #6e6e6e;
@@ -28,12 +39,9 @@ body {
     margin: 0;
     position: relative; }
   .navbar .edit {
-    border-radius: 2px;
     bottom: 4px;
-    height: 30px;
     position: absolute;
-    right: 10px;
-    width: 30px; }
+    right: 10px; }
 
 .chart-filters {
   margin: 0 auto;
@@ -74,3 +82,9 @@ body {
   .record span {
     position: relative;
     top: 50px; }
+
+.entry {
+  margin-bottom: 16px; }
+  .entry input {
+    display: inline-block;
+    width: 20%; }

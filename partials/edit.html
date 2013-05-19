@@ -1,0 +1,14 @@
+<span class="back btn icon">
+  <a href="#/">
+    <img src="img/back.png">
+  </a>
+</span>
+
+<h3>Sleep-Wake Entries</h3>
+
+<div class="entry" ng-repeat="entry in entries">
+  <input class="sleep" type="text" placeholder="{{ entry.default }}"
+         ng-model="entry.sleep">
+  <input class="wake" type="text" placeholder="{{ entry.default }}"
+         ng-model="entry.wake">
+</div>
