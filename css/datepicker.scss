@@ -17,11 +17,20 @@ img.icon {
          margin: 0 auto 8px;
          text-align: center;
          td {
-             border-radius: 1px;
+             border-radius: 2px;
              padding: 8px;
              &:hover, &.selected {
-                 background: $light-gray;
-                 cursor: pointer;
+                cursor: pointer;
+             }
+             &:hover {
+                background: $light-gray;
+             }
+             &.selected {
+                background: $dark-gray;
+                color: $white;
+                &:hover {
+                    background: $gray;
+                }
              }
          }
      }
@@ -74,8 +83,10 @@ img.icon {
         background: $dark-gray;
         border: 1px solid $gray;
         border-radius: 2px;
+        display: inline-block;
         color: $white;
         font-size: 24px;
+        min-width: 30px;
         padding: 6px;
         &:hover {
             background: $gray;

@@ -69,4 +69,16 @@ angular.module('LucidApp')
             $scope.selectedDate = date;
         }
     };
+
+    $scope.incHour = function() {
+        $scope.hour = $scope.hour == 12 ? 1 : $scope.hour + 1;
+    };
+
+    $scope.incMinute = function() {
+        $scope.minute = $scope.minute == 45 ? 0 : $scope.minute + 15;
+    };
+
+    $scope.togMeridiem = function() {
+        $scope.meridiem = $scope.meridiem == 'am' ? 'pm' : 'am';
+    };
 }]);
