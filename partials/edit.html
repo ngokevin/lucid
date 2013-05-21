@@ -6,28 +6,31 @@
 
 <h3>Sleep-Wake Entries</h3>
 
-<h2>
-  <span>{{ month + 1 }}</span>
-  <span>{{ year }}</span>
-</h2>
-<table>
-  <thead>
-    <tr>
-      <th ng-repeat="day in ['S', 'M', 'T', 'W', 'T', 'F', 'S']">{{ day }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="week in weeks">
-      <td ng-repeat="date in week">
-        {{ date }}
-      </td>
-    <tr>
-  </tbody>
-</table>
-
-<div class="entry" ng-repeat="entry in entries">
-  <input class="sleep" type="text" placeholder="{{ entry.default }}"
-         ng-model="entry.sleep">
-  <input class="wake" type="text" placeholder="{{ entry.default }}"
-         ng-model="entry.wake">
+<div class="datepicker">
+  <div class="heading c">
+    <div class="month">
+      <span class="btn"><img src="img/back.png"></span>
+      <h3>{{ date | date:'MMMM' }}</h3>
+      <span class="btn"><img src="img/forward.png"></span>
+    </div>
+    <div class="year">
+      <span class="btn"><img src="img/back.png"></span>
+      <h3>{{ date | date:'yyyy' }}</h3>
+      <span class="btn"><img src="img/forward.png"></span>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th ng-repeat="day in ['S', 'M', 'T', 'W', 'T', 'F', 'S']">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="week in weeks">
+        <td ng-repeat="date in week">
+          {{ date | date:'d' }}
+        </td>
+      <tr>
+    </tbody>
+  </table>
 </div>

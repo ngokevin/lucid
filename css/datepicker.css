@@ -1,0 +1,32 @@
+.datepicker table {
+  margin: 0 auto;
+  text-align: center; }
+  .datepicker table td {
+    border-radius: 1px;
+    padding: 10px; }
+    .datepicker table td:hover {
+      background: gainsboro;
+      cursor: pointer; }
+.datepicker .heading {
+  height: 48px;
+  position: relative; }
+  .datepicker .heading img {
+    background: gainsboro;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    top: 3px;
+    width: 20px; }
+    .datepicker .heading img:hover {
+      background: #6e6e6e; }
+  .datepicker .heading .month, .datepicker .heading .year {
+    position: absolute; }
+    .datepicker .heading .month h3, .datepicker .heading .year h3 {
+      display: inline-block;
+      margin: 0; }
+  .datepicker .heading .month {
+    left: 24px; }
+    .datepicker .heading .month h3 {
+      width: 106px; }
+  .datepicker .heading .year {
+    right: 24px; }

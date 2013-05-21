@@ -49,7 +49,7 @@ body {
         position: relative;
     }
     .edit {
-        bottom: 4px;
+        bottom: 3px;
         position: absolute;
         right: 10px;
     }
@@ -110,4 +110,15 @@ body {
         display: inline-block;
         width: 20%;
     }
+}
+
+.c:before, .c:after {
+    content: "";
+    display: table;
+}
+.c:after {
+    clear: both;
+}
+.c {
+    zoom: 1;
 }
