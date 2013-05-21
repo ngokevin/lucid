@@ -12,7 +12,13 @@ angular.module('LucidApp')
                          function ($scope, EntryService) {
     $scope.entries = EntryService.get();
     $scope.date = new Date();
-    $scope.selectedDate = new Date();
+    $scope.selectedDate = $scope.date;
+
+    // Default time-picker values.
+    $scope.hour = 12;
+    $scope.minute = 0;
+    $scope.meridiem = 'am';
+    $scope.duration = 8;
 
     buildCalendar();
     function buildCalendar() {
@@ -58,7 +64,9 @@ angular.module('LucidApp')
     };
 
     $scope.selectDate = function(date) {
-        $('td').removeClass('selected');
-        $scope.selectedDate = date;
-    }
+        if (date.toDateString() != $scope.selectedDate.toDateString()) {
+            $('td').removeClass('selected');
+            $scope.selectedDate = date;
+        }
+    };
 }]);

@@ -37,7 +37,7 @@ body {
 .navbar {
     background: $gray;
     border-bottom: 1px solid $black;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     padding-top: 8px;
     position: relative;
     h2 {
@@ -63,7 +63,7 @@ body {
     .chart-tabs {
         position: absolute;
         right: -1px;
-        bottom: 4px;
+        top: 9px;
         span {
             border-radius: 2px 2px 0 0;
             border-top: 1px solid $black;
@@ -76,9 +76,10 @@ body {
 
 .chart {
     background: $gray;
-    border: 1px $black solid;
+    border: 1px $dark-gray solid;
+    border-radius: 2px;
     height: 200px;
-    margin: 0 auto 16px auto;
+    margin: 16px auto 16px;
     width: 300px;
 }
 

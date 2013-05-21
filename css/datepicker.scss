@@ -13,12 +13,12 @@ img.icon {
 
 
 .datepicker {
-        table {
-         margin: 0 auto;
+    table {
+         margin: 0 auto 8px;
          text-align: center;
          td {
              border-radius: 1px;
-             padding: 10px;
+             padding: 8px;
              &:hover, &.selected {
                  background: $light-gray;
                  cursor: pointer;
@@ -26,7 +26,7 @@ img.icon {
          }
      }
      .heading {
-         height: 48px;
+         height: 32px;
          position: relative;
          img {
              cursor: pointer;
@@ -59,7 +59,37 @@ img.icon {
 
 .timepicker {
     strong {
+        display: block;
+        margin-bottom: 16px;
         position: relative;
         right: 4px;
+    }
+    input {
+        display: inline;
+        font-size: 24px;
+        width: 40px;
+        text-align: center;
+    }
+    .time {
+        background: $dark-gray;
+        border: 1px solid $gray;
+        border-radius: 2px;
+        color: $white;
+        font-size: 24px;
+        padding: 6px;
+        &:hover {
+            background: $gray;
+        }
+    }
+    .submit {
+        background: $dark-gray;
+        bottom: 0;
+        color:  $white;
+        position: absolute;
+        width: 100%;
+        padding: 8px 0;
+        &:hover {
+            background: $gray;
+        }
     }
 }

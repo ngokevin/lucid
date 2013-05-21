@@ -7,16 +7,16 @@ img.icon {
     background: #6e6e6e; }
 
 .datepicker table {
-  margin: 0 auto;
+  margin: 0 auto 8px;
   text-align: center; }
   .datepicker table td {
     border-radius: 1px;
-    padding: 10px; }
+    padding: 8px; }
     .datepicker table td:hover, .datepicker table td.selected {
       background: gainsboro;
       cursor: pointer; }
 .datepicker .heading {
-  height: 48px;
+  height: 32px;
   position: relative; }
   .datepicker .heading img {
     cursor: pointer;
@@ -39,5 +39,30 @@ img.icon {
     right: 24px; }
 
 .timepicker strong {
+  display: block;
+  margin-bottom: 16px;
   position: relative;
   right: 4px; }
+.timepicker input {
+  display: inline;
+  font-size: 24px;
+  width: 40px;
+  text-align: center; }
+.timepicker .time {
+  background: #373737;
+  border: 1px solid #6e6e6e;
+  border-radius: 2px;
+  color: whitesmoke;
+  font-size: 24px;
+  padding: 6px; }
+  .timepicker .time:hover {
+    background: #6e6e6e; }
+.timepicker .submit {
+  background: #373737;
+  bottom: 0;
+  color: whitesmoke;
+  position: absolute;
+  width: 100%;
+  padding: 8px 0; }
+  .timepicker .submit:hover {
+    background: #6e6e6e; }

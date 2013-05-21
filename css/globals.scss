@@ -16,7 +16,7 @@ $white: rgb(245, 245, 245);
 }
 
 @mixin default-box-shadow() {
-    @include box-shadow(0 0 1px 1px $medium-gray);
+    @include box-shadow(0 0 1px 1px $gray);
 }
 
 @mixin gradient($color1, $color2) {

@@ -39,4 +39,11 @@
     <img class="icon dark" src="img/today.png">
     {{ selectedDate | date:'longDate' }}
   </strong>
+  <span class="time btn">{{ hour }}</span>:
+  <span class="time btn">{{ minute }}</span>
+  <span class="time btn">{{ meridiem }}</span>
+  <span>for</span>
+  <input ng-model="duration" class="duration" type="number" min="0">
+  <span>hrs</span>
+  <div class="submit btn">Add Sleep Session</div>
 </div>
