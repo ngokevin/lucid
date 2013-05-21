@@ -11,10 +11,10 @@ angular.module('LucidApp')
 .controller('EditCtrl', ['$scope', 'EntryService',
                          function ($scope, EntryService) {
     $scope.entries = EntryService.get();
-
     $scope.date = new Date();
-    buildCalendar();
+    $scope.selectedDate = new Date();
 
+    buildCalendar();
     function buildCalendar() {
         var scopeYear = $scope.date.getFullYear();
         var scopeMonth = $scope.date.getMonth();
@@ -30,7 +30,7 @@ angular.module('LucidApp')
 
         // Calendar body and tail.
         date = new Date(scopeYear, scopeMonth, 1);
-        while (date.getMonth() === scopeMonth ||
+        while (date.getMonth() === scopeMonth || $scope.weeks.length < 6 ||
                $scope.weeks[$scope.weeks.length - 1].length < 7) {
             if (date.getDay() === 0) {
                 $scope.weeks.push([]);
@@ -39,5 +39,26 @@ angular.module('LucidApp')
                 new Date(date.getTime()));
             date.setDate(date.getDate() + 1);
         }
+    }
+
+    $scope.changeMonth = function(direction) {
+        var month = $scope.date.getMonth();
+        if (direction === -1) {
+            $scope.date.setMonth(month === 0 ? 11 : month - 1);
+        } else {
+            $scope.date.setMonth(month === 11 ? 0 : month + 1);
+        }
+        buildCalendar();
+    };
+
+    $scope.changeYear = function(direction) {
+        var year = $scope.date.getFullYear();
+        $scope.date.setFullYear(year + direction);
+        buildCalendar();
+    };
+
+    $scope.selectDate = function(date) {
+        $('td').removeClass('selected');
+        $scope.selectedDate = date;
     }
 }]);

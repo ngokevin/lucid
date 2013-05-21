@@ -1,18 +1,25 @@
+img.icon {
+  background: gainsboro;
+  display: inline-block;
+  height: 16px;
+  width: 16px; }
+  img.icon.dark {
+    background: #6e6e6e; }
+
 .datepicker table {
   margin: 0 auto;
   text-align: center; }
   .datepicker table td {
     border-radius: 1px;
     padding: 10px; }
-    .datepicker table td:hover {
+    .datepicker table td:hover, .datepicker table td.selected {
       background: gainsboro;
       cursor: pointer; }
 .datepicker .heading {
   height: 48px;
   position: relative; }
   .datepicker .heading img {
-    background: gainsboro;
-    display: inline-block;
+    cursor: pointer;
     height: 20px;
     position: relative;
     top: 3px;
@@ -30,3 +37,7 @@
       width: 106px; }
   .datepicker .heading .year {
     right: 24px; }
+
+.timepicker strong {
+  position: relative;
+  right: 4px; }

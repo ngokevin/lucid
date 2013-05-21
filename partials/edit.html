@@ -4,19 +4,17 @@
   </a>
 </span>
 
-<h3>Sleep-Wake Entries</h3>
-
 <div class="datepicker">
   <div class="heading c">
     <div class="month">
-      <span class="btn"><img src="img/back.png"></span>
+      <img ng-click="changeMonth(-1)" class="icon" src="img/back.png">
       <h3>{{ date | date:'MMMM' }}</h3>
-      <span class="btn"><img src="img/forward.png"></span>
+      <img ng-click="changeMonth(1)" class="icon" src="img/forward.png">
     </div>
     <div class="year">
-      <span class="btn"><img src="img/back.png"></span>
+      <img ng-click="changeYear(-1)" class="icon" src="img/back.png">
       <h3>{{ date | date:'yyyy' }}</h3>
-      <span class="btn"><img src="img/forward.png"></span>
+      <img ng-click="changeYear(1)" class="icon" src="img/forward.png">
     </div>
   </div>
   <table>
@@ -27,10 +25,18 @@
     </thead>
     <tbody>
       <tr ng-repeat="week in weeks">
-        <td ng-repeat="date in week">
+        <td ng-class="{'selected': selectedDate.toDateString() == date.toDateString()}"
+            ng-click="selectDate(date)" ng-repeat="date in week">
           {{ date | date:'d' }}
         </td>
       <tr>
     </tbody>
   </table>
+</div>
+
+<div class="timepicker">
+  <strong>
+    <img class="icon dark" src="img/today.png">
+    {{ selectedDate | date:'longDate' }}
+  </strong>
 </div>
