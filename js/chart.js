@@ -25,7 +25,7 @@ var PeriodBarChart = function() {
         },
         yAxis: {
             title: 'Time',
-            padding: 18
+            padding: 30
         }
     };
 
@@ -109,7 +109,7 @@ var PeriodBarChart = function() {
                 return xScale(i);
             })
             .attr('y', function(d, i) {
-                return cfg.chart.height - yScale(DAY_SECS - _daySecs(d.sleep));
+                return cfg.chart.height - cfg.xAxis.padding - yScale(DAY_SECS - _daySecs(d.sleep));
             });
 
         // X axis text.
@@ -122,11 +122,11 @@ var PeriodBarChart = function() {
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('text-anchor', 'middle')
             .attr('x', function(d, i) {
-                return xScale(i) + rectWidth;
+                return xScale(i) + rectWidth * 1.25;
             })
             .attr('y', cfg.chart.height)
             .text(function(d, i) {
-                return d.sleep.getMonth() + '/' + d.sleep.getDay();
+                return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
             });
 
         // Y axis text.
@@ -138,10 +138,21 @@ var PeriodBarChart = function() {
             .attr('fill', cfg.chart.fontColor)
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('y', function(d) {
-                return yScale(d) + cfg.xAxis.padding + cfg.chart.fontSize / 2;
+                return yScale(d) + cfg.xAxis.padding - cfg.chart.fontSize / 2 - 2;
             })
             .text(function(d, i) {
-                return d / 60 / 60;
+                var hour = d / 60 / 60;
+                if (hour === 0 || hour == 24) {
+                    return 'M';
+                } else if (hour == 12) {
+                    return 'N';
+                } else if (hour > 12) {
+                    hour -= 12;
+                    hour += 'pm';
+                } else if (hour < 12) {
+                    hour += 'am';
+                }
+                return hour;
             });
     }
 

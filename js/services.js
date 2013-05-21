@@ -14,10 +14,10 @@ angular.module('LucidApp', [])
          wake: new Date('May 18, 2013 06:00:00')},
         {sleep: new Date('May 19, 2013 02:00:00'),
          wake: new Date('May 19, 2013 07:00:00')},
-        {sleep: new Date('May 20, 2013 02:00:00'),
-         wake: new Date('May 20, 2013 07:00:00')},
-        {sleep: new Date('May 21, 2013 02:00:00'),
-         wake: new Date('May 21, 2013 08:00:00')}
+        {sleep: new Date('May 20, 2013 21:00:00'),
+         wake: new Date('May 20, 2013 24:00:00')},
+        {sleep: new Date('May 21, 2013 23:00:00'),
+         wake: new Date('May 21, 2013 24:00:00')}
     ];
     return {
         get: function() {
