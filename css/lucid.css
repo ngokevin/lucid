@@ -60,6 +60,7 @@ body {
       padding: 4px 8px; }
 
 .chart {
+  background: #6e6e6e;
   border: 1px #050505 solid;
   height: 200px;
   margin: 0 auto 16px auto;
