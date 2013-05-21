@@ -6,6 +6,25 @@
 
 <h3>Sleep-Wake Entries</h3>
 
+<h2>
+  <span>{{ month + 1 }}</span>
+  <span>{{ year }}</span>
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th ng-repeat="day in ['S', 'M', 'T', 'W', 'T', 'F', 'S']">{{ day }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="week in weeks">
+      <td ng-repeat="date in week">
+        {{ date }}
+      </td>
+    <tr>
+  </tbody>
+</table>
+
 <div class="entry" ng-repeat="entry in entries">
   <input class="sleep" type="text" placeholder="{{ entry.default }}"
          ng-model="entry.sleep">

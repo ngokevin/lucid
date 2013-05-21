@@ -17,7 +17,7 @@ var PeriodBarChart = function() {
         },
         rect: {
             inactiveColor: 'rgb(220, 220, 220)',
-            activeColor: '#299283',
+            activeColor: '#299283'
         },
         xAxis: {
             title: 'Date',
