@@ -15,15 +15,16 @@ var PeriodBarChart = function() {
             width: 300
         },
         rect: {
-            color: '#299283',
+            inactiveColor: 'rgb(220, 220, 220)',
+            activeColor: '#299283',
         },
         xAxis: {
             title: 'Date',
-            padding: 20
+            padding: 15
         },
         yAxis: {
             title: 'Time',
-            padding: 10
+            padding: 22
         }
     };
 
@@ -44,8 +45,7 @@ var PeriodBarChart = function() {
         cfg.data = data;
         for (var key in _cfg) {
             cfg[key] = _cfg[key];
-        }
-        element = _element;
+        } element = _element;
         draw(element);
     };
 
@@ -66,25 +66,42 @@ var PeriodBarChart = function() {
             .domain([0, DAY_SECS])
             .range([0, cfg.chart.height - cfg.xAxis.padding]);
 
-        axisGroup = this.chart.append('g')
-            .attr('transform',
-                  'translate(' + cfg.yAxis.padding + ', ' +
-                   cfg.xAxis.padding + ')');
+        yAxisGroup = this.chart.append('g')
+            .attr('transform', 'translate(0, ' + cfg.xAxis.padding + ')');
 
         // Group elements in the chart together to help padding.
         chartGroup = this.chart.append('g')
             .attr('transform',
                   'translate(' + cfg.yAxis.padding + ', ' +
-                   cfg.xAxis.padding + ')');
+                   0 + ')');
 
-        // Bars.
+        // Awake bars.
         var rectWidth = (cfg.chart.width - cfg.yAxis.padding) / cfg.data.length;
-        var rects = chartGroup.selectAll('rect')
+        var rects = chartGroup.selectAll('rect.awake')
             .data(cfg.data)
             .enter()
             .append('svg:rect')
-            .attr('class', 'bar')
-            .attr('fill', cfg.rect.color)
+            .attr('class', 'awake')
+            .attr('fill', cfg.rect.inactiveColor)
+            .attr('height', function(d, i) {
+                return yScale(DAY_SECS);
+            })
+            .attr('opacity', cfg.rect.opacity)
+            .attr('width', rectWidth)
+            .attr('x', function(d, i) {
+                return xScale(i);
+            })
+            .attr('y', function(d, i) {
+                return yScale(0);
+            });
+
+        // Sleep bars.
+        var rects = chartGroup.selectAll('rect.sleep')
+            .data(cfg.data)
+            .enter()
+            .append('svg:rect')
+            .attr('class', 'sleep')
+            .attr('fill', cfg.rect.activeColor)
             .attr('height', function(d, i) {
                 return yScale((d.wake.getTime() - d.sleep.getTime()) / 1000);
             })
@@ -98,22 +115,22 @@ var PeriodBarChart = function() {
             });
 
         // X axis text.
-        axisGroup.selectAll('text.xAxis')
+        this.chart.selectAll('text.xAxis')
             .data(cfg.data)
             .enter()
             .append('svg:text')
             .attr('class', 'xAxis')
-            .text(function(d) {
-                return d[0];
+            .text(function(d, i) {
+                return d.sleep.getMonth() + '/' + d.sleep.getDay();
             })
             .attr('x', function(d, i) {
-                return xScale(i) + rectWidth / 2;
+                return xScale(i) + rectWidth;
             })
-
+            .attr('y', cfg.chart.height)
             .attr('text-anchor', 'middle');
 
         // Y axis text.
-        axisGroup.selectAll('text.yAxis')
+        yAxisGroup.selectAll('text.yAxis')
             .data(hourArray(0, 24, 3))
             .enter()
             .append('svg:text')
