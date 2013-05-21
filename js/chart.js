@@ -13,8 +13,8 @@ var PeriodBarChart = function() {
             title: 'Sleep Chart',
             width: 300
         },
-        color: '#AAAAEE',
         rect: {
+            color: '#299283',
             padding: 10,
         },
         xAxis: {
@@ -56,7 +56,7 @@ var PeriodBarChart = function() {
         this.chart = d3.select(element)
             .append('svg:svg')
             .attr('width', cfg.chart.width + widthPadding)
-            .attr('height', cfg.chart.height + heightPadding);
+            .attr('height', cfg.chart.height);
 
         // Create scales.
         var xScale = d3.scale.linear()
@@ -81,7 +81,7 @@ var PeriodBarChart = function() {
             .attr('class', 'bar')
             .attr('fill', cfg.rect.color)
             .attr('height', function(d, i) {
-                return yScale(d.wake.getTime() - d.sleep.getTime());
+                return yScale((d.wake.getTime() - d.sleep.getTime()) / 1000);
             })
             .attr('opacity', cfg.rect.opacity)
             .attr('width', cfg.chart.width / cfg.data.length - 20)
@@ -89,7 +89,7 @@ var PeriodBarChart = function() {
                 return xScale(i);
             })
             .attr('y', function(d, i) {
-                return yScale(DAY_SECS - _daySecs(d.sleep));
+                return cfg.chart.height - yScale(DAY_SECS - _daySecs(d.sleep));
             });
 
         // Chart title.
@@ -136,22 +136,33 @@ var PeriodBarChart = function() {
             .attr('x', function(d, i) {
                 return xScale(i) + cfg.rect.width / 2;
             })
-            .attr('y', cfg.chart.height + cfg.chart.padding)
+
             .attr('text-anchor', 'middle');
 
         // Y axis text.
         chartGroup.selectAll('text.yAxis')
-            .data(yScale.ticks(24))
+            .data(hourArray(0, 24, 3))
             .enter()
             .append('svg:text')
             .attr('class', 'yAxis')
-            .text(function(d) {
-                return d;
+            .text(function(d, i) {
+                return d / 60 / 60 + ':00';
             })
             .attr('x', -1.25 * cfg.chart.padding)
             .attr('y', function(d) {
-                return cfg.chart.height - yScale(d);
+                return yScale(d);
             });
+    }
+
+
+    function hourArray(start, end, mod) {
+        var foo = [];
+        for (var i = start; i <= end; i++) {
+            if (i % mod === 0) {
+                foo.push(i * 60 * 60);
+            }
+        }
+        return foo;
     }
 
 

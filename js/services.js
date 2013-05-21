@@ -17,7 +17,7 @@ angular.module('LucidApp', [])
         {sleep: new Date('May 20, 2013 02:00:00'),
          wake: new Date('May 20, 2013 07:00:00')},
         {sleep: new Date('May 21, 2013 02:00:00'),
-         wake: new Date('May 21, 2013 08:00:00')},
+         wake: new Date('May 21, 2013 08:00:00')}
     ];
     return {
         get: function() {
