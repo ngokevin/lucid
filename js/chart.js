@@ -43,12 +43,38 @@ var PeriodBarChart = function() {
 
 
     var periodBarChart = function(_element, data, _cfg) {
-        cfg.data = data;
+        cfg.data = clean(data);
         for (var key in _cfg) {
             cfg[key] = _cfg[key];
         } element = _element;
         draw(element);
     };
+
+
+    function clean(data) {
+        // Segments objects with start and end Dates that span over multiple
+        // days into separate objects that are contained within a day.
+        console.log(data);
+        var entry, midnight;
+        for (var i = 0; i < data.length; i++) {
+            entry = data[i];
+            if (entry.sleep.getDate() == entry.wake.getDate()) {
+                // Don't need to do anything if sleep and wake on same day.
+                continue;
+            }
+
+            midnight = new Date(entry.wake.getTime());
+            midnight.setHours(0, 0);
+            data.push({
+                sleep: midnight,
+                wake: new Date(entry.wake.getTime())
+            });
+
+            entry.wake = midnight;
+        }
+        console.log(data);
+        return data;
+    }
 
 
     function draw(element) {
