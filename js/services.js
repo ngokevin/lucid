@@ -2,8 +2,8 @@ angular.module('LucidApp', [])
 
 
 .service('EntryService', function() {
-    var entries = [];
-    /*var entries = [
+    // var entries = [];
+    var entries = [
         {sleep: new Date('May 15, 2013 00:00:00'),
          wake: new Date('May 15, 2013 03:00:00')},
         {sleep: new Date('May 16, 2013 03:00:00'),
@@ -18,7 +18,7 @@ angular.module('LucidApp', [])
          wake: new Date('May 20, 2013 24:00:00')},
         {sleep: new Date('May 21, 2013 23:00:00'),
          wake: new Date('May 21, 2013 24:00:00')}
-    ];*/
+    ];
     return {
         get: function() {
             return entries;

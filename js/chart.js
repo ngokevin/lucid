@@ -11,7 +11,7 @@ var PeriodBarChart = function() {
             fontSize: '12',
             height: 200,
             opacity: '.95',
-            padding: 0,
+            topPadding: 15,
             title: 'Sleep Chart',
             width: 300
         },
@@ -54,11 +54,11 @@ var PeriodBarChart = function() {
     function clean(data) {
         // Segments objects with start and end Dates that span over multiple
         // days into separate objects that are contained within a day.
-        console.log(data);
         var entry, midnight;
         for (var i = 0; i < data.length; i++) {
             entry = data[i];
-            if (entry.sleep.getDate() == entry.wake.getDate()) {
+            if (entry.sleep.getDate() == entry.wake.getDate() ||
+                (entry.wake.getHours() == 0 && entry.wake.getMinutes() == 0)) {
                 // Don't need to do anything if sleep and wake on same day.
                 continue;
             }
@@ -72,7 +72,6 @@ var PeriodBarChart = function() {
 
             entry.wake = midnight;
         }
-        console.log(data);
         return data;
     }
 
@@ -91,13 +90,13 @@ var PeriodBarChart = function() {
 
         var yScale = d3.scale.linear()
             .domain([0, DAY_SECS])
-            .range([0, cfg.chart.height - cfg.xAxis.padding]);
+            .range([cfg.chart.topPadding, cfg.chart.height - cfg.xAxis.padding - cfg.chart.topPadding]);
 
         // Group elements in the chart together to help padding.
         chartGroup = this.chart.append('g')
             .attr('transform',
                   'translate(' + cfg.yAxis.padding + ', ' +
-                   0 + ')');
+                    0+ ')');
 
         // Awake bars.
         var rectWidth = (cfg.chart.width - cfg.yAxis.padding) / cfg.data.length;
@@ -139,7 +138,7 @@ var PeriodBarChart = function() {
             });
 
         // X axis text.
-        this.chart.selectAll('text.xAxis')
+        chartGroup.selectAll('text.xAxis')
             .data(cfg.data)
             .enter()
             .append('svg:text')
@@ -148,7 +147,7 @@ var PeriodBarChart = function() {
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('text-anchor', 'middle')
             .attr('x', function(d, i) {
-                return xScale(i) + rectWidth * 1.25;
+                return xScale(i) + rectWidth / 2;
             })
             .attr('y', cfg.chart.height)
             .text(function(d, i) {
@@ -164,7 +163,7 @@ var PeriodBarChart = function() {
             .attr('fill', cfg.chart.fontColor)
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('y', function(d) {
-                return yScale(d) + cfg.xAxis.padding - cfg.chart.fontSize / 2 - 2;
+                return yScale(d) + cfg.chart.fontSize / 2 - 2;
             })
             .text(function(d, i) {
                 var hour = d / 60 / 60;
