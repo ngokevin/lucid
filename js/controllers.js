@@ -20,6 +20,24 @@ angular.module('LucidApp')
     $scope.meridiem = 'am';
     $scope.duration = 8;
 
+    $scope.addSleep = function() {
+        var sleepDate = new Date($scope.date.getTime());
+        var hour = $scope.hour;
+        if ($scope.meridiem == 'pm') {
+            hour += 12;
+        }
+        sleepDate.setHours(hour, $scope.minute);
+
+        var wakeDate = new Date(sleepDate.getTime());
+        wakeDate.setTime(wakeDate.getTime() +
+                         ($scope.duration * 60 * 60 * 1000));
+
+        $scope.entries = EntryService.add({
+            sleep: sleepDate,
+            wake: wakeDate
+        });
+    }
+
     buildCalendar();
     function buildCalendar() {
         var scopeYear = $scope.date.getFullYear();

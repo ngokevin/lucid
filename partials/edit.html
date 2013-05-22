@@ -39,11 +39,11 @@
     <img class="icon dark" src="img/today.png">
     {{ selectedDate | date:'longDate' }}
   </strong>
-  <span ng-click="incHour()" class="time btn">{{ hour }}</span>:
-  <span ng-click="incMinute()" class="time btn">{{ minute }}</span>
-  <span ng-click="togMeridiem()" class="time btn">{{ meridiem }}</span>
+  <span ng-click="incHour()" class="time btn">{{ hour | pad:2 }}</span>:
+  <span ng-click="incMinute()" class="time btn">{{ minute | pad:2 }}</span>
+  <span ng-click="togMeridiem()" class="time meridiem btn">{{ meridiem }}</span>
   <span>for</span>
   <input ng-model="duration" class="duration" type="number" min="0">
   <span>hrs</span>
-  <div class="submit btn">Add Sleep Session</div>
+  <div ng-click="addSleep()" class="submit btn">Add Sleep Session</div>
 </div>

@@ -63,6 +63,8 @@ img.icon {
   font-size: 24px;
   min-width: 30px;
   padding: 6px; }
+  .timepicker .time.meridiem {
+    font-family: monospace; }
   .timepicker .time:hover {
     background: #6e6e6e; }
 .timepicker .submit {
