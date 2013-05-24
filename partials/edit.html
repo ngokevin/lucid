@@ -61,7 +61,7 @@
 </div>
 
 <div class="entries">
-  <table>
+  <table ng-hide="entries | filter:inSelectedDate | isEmpty">
     <thead>
       <tr>
         <th>Sleep</th>
