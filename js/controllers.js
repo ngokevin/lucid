@@ -99,4 +99,8 @@ angular.module('LucidApp')
     $scope.togMeridiem = function() {
         $scope.meridiem = $scope.meridiem == 'am' ? 'pm' : 'am';
     };
+
+    $scope.changeDuration = function(duration) {
+        $scope.duration += duration;
+    };
 }]);

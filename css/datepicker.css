@@ -3,7 +3,7 @@ img.icon {
   display: inline-block;
   height: 16px;
   width: 16px; }
-  img.icon.dark {
+  img.icon.dark, img.icon:hover {
     background: #6e6e6e; }
 
 .datepicker table {
@@ -11,7 +11,7 @@ img.icon {
   text-align: center; }
   .datepicker table td {
     border-radius: 2px;
-    padding: 8px; }
+    padding: 7px; }
     .datepicker table td:hover, .datepicker table td.selected {
       cursor: pointer; }
     .datepicker table td:hover {
@@ -46,7 +46,7 @@ img.icon {
 
 .timepicker strong {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   position: relative;
   right: 4px; }
 .timepicker input {
@@ -65,8 +65,26 @@ img.icon {
   padding: 6px; }
   .timepicker .time.meridiem {
     font-family: monospace; }
-  .timepicker .time:hover {
-    background: #6e6e6e; }
+.timepicker .duration {
+  display: inline-block;
+  position: relative; }
+  .timepicker .duration img {
+    border-radius: 1px;
+    position: absolute; }
+    .timepicker .duration img.inc {
+      -moz-transform: rotate(90deg) scaleY(2.75);
+      -ms-transform: rotate(90deg) scaleY(2.75);
+      -o-transform: rotate(90deg) scaleY(2.75);
+      -webkit-transform: rotate(90deg) scaleY(2.75);
+      left: 15px;
+      top: -16px; }
+    .timepicker .duration img.dec {
+      -moz-transform: rotate(-90deg) scaleY(2.75);
+      -ms-transform: rotate(-90deg) scaleY(2.75);
+      -o-transform: rotate(-90deg) scaleY(2.75);
+      -webkit-transform: rotate(-90deg) scaleY(2.75);
+      bottom: -16px;
+      left: 15px; }
 .timepicker .submit {
   background: #373737;
   bottom: 0;

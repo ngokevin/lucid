@@ -6,11 +6,10 @@ img.icon {
     display: inline-block;
     height: 16px;
     width: 16px;
-    &.dark {
+    &.dark, &:hover {
         background: $gray;
     }
 }
-
 
 .datepicker {
     table {
@@ -18,7 +17,7 @@ img.icon {
          text-align: center;
          td {
              border-radius: 2px;
-             padding: 8px;
+             padding: 7px;
              &:hover, &.selected {
                 cursor: pointer;
              }
@@ -69,7 +68,7 @@ img.icon {
 .timepicker {
     strong {
         display: block;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         position: relative;
         right: 4px;
     }
@@ -91,8 +90,23 @@ img.icon {
         &.meridiem {
             font-family: monospace;
         }
-        &:hover {
-            background: $gray;
+    }
+    .duration {
+        display: inline-block;
+        position: relative;
+        img {
+            border-radius: 1px;
+            position: absolute;
+            &.inc {
+                @include transform(rotate(90deg) scaleY(2.75));
+                left: 15px;
+                top: -16px;
+            }
+            &.dec {
+                @include transform(rotate(-90deg) scaleY(2.75));
+                bottom: -16px;
+                left: 15px;
+            }
         }
     }
     .submit {

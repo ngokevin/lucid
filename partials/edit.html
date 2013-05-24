@@ -1,4 +1,4 @@
-<span class="back btn icon">
+<span class="btn icon back">
   <a href="#/">
     <img src="img/back.png">
   </a>
@@ -39,11 +39,17 @@
     <img class="icon dark" src="img/today.png">
     {{ selectedDate | date:'longDate' }}
   </strong>
-  <span ng-click="incHour()" class="time btn">{{ hour | pad:2 }}</span>:
-  <span ng-click="incMinute()" class="time btn">{{ minute | pad:2 }}</span>
-  <span ng-click="togMeridiem()" class="time meridiem btn">{{ meridiem }}</span>
+
+  <span ng-click="incHour()" class="btn time">{{ hour | pad:2 }}</span>:
+  <span ng-click="incMinute()" class="btn time">{{ minute | pad:2 }}</span>
+  <span ng-click="togMeridiem()" class="btn time meridiem">{{ meridiem }}</span>
   <span>for</span>
-  <input ng-model="duration" class="duration" type="number" min="0">
+  <div class="duration">
+    <img ng-click="changeDuration(1)" class="btn icon inc" src="img/back.png">
+    <input ng-model="duration" type="number" min="0">
+    <img ng-click="changeDuration(-1)" class="btn icon dec" src="img/back.png">
+  </div>
+
   <span>hrs</span>
   <div ng-click="addSleep()" class="submit btn">Add Sleep Session</div>
 </div>
