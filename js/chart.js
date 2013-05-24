@@ -22,22 +22,20 @@ var PeriodBarChart = function() {
             activeColor: '#299283'
         },
         xAxis: {
-            title: 'Date',
+            days: 7,
             padding: 5
         },
         yAxis: {
-            title: 'Time',
             padding: 35
         }
     };
 
 
     var periodBarChart = function(_element, data, _cfg) {
-        cfg.data = pad(clean(data));
+        cfg = $.extend(true, {}, cfg, _cfg);
+        cfg.data = pad(clean(trim(data)));
         bucketedData = bucket(cfg.data);
-        for (var key in _cfg) {
-            cfg[key] = _cfg[key];
-        } element = _element;
+        element = _element;
         draw(element);
     };
 
@@ -115,8 +113,22 @@ var PeriodBarChart = function() {
         }
         entries.push(dayBucket);
         return entries;
+    }
 
+
+    function trim(data) {
+        // Trim to the last n days of data.
+        var minDate = new Date();
+        minDate.setDate(minDate.getDate() - cfg.xAxis.days);
+
+        var entries = [];
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].sleep > minDate) {
+                entries.push(data[i]);
             }
+        }
+        return entries;
+    }
 
 
     function draw(element) {
