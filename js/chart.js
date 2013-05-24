@@ -223,8 +223,8 @@ var PeriodBarChart = function() {
                     // Case where we show every day.
                     modDays = bucketedData.length;
                 }
-                // Show only every 7 dates on xAxis.
-                if (getBucketedIndex(d) % parseInt(modDays / 7, 10) === 0) {
+                if (getBucketedIndex(d) % Math.floor(modDays / 6) === 0) {
+                    // Show only about every 7 dates on xAxis.
                     return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
                 }
             });
