@@ -94,8 +94,7 @@ angular.module('LucidApp')
     };
 
     $scope.incHour = function() {
-        $scope.hour = $scope.hour == 12 ? 1 : $scope.hour + 1;
-    };
+        $scope.hour = $scope.hour == 12 ? 1 : $scope.hour + 1; };
 
     $scope.incMinute = function() {
         $scope.minute = $scope.minute == 45 ? 0 : $scope.minute + 15;
@@ -120,5 +119,12 @@ angular.module('LucidApp')
 
     $scope.deleteEntry = function(i) {
         $scope.entries = EntryService.del(i);
+    };
+
+    $scope.toggleDatePicker = function() {
+        $('.datepicker').slideToggle();
+        setTimeout(function() {
+            $('.entries').toggle();
+        }, 200);
     };
 }]);

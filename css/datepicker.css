@@ -1,3 +1,8 @@
+.edit.toggle-picker {
+  position: absolute;
+  right: 10px;
+  top: 3px; }
+
 .datepicker table {
   margin: 0 auto 8px;
   text-align: center; }
