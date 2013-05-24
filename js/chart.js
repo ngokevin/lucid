@@ -4,6 +4,7 @@ var PeriodBarChart = function() {
     var chart;
     var chartGroup;
     var element;
+    var bucketedData;
 
     var cfg = {
         chart: {
@@ -32,7 +33,8 @@ var PeriodBarChart = function() {
 
 
     var periodBarChart = function(_element, data, _cfg) {
-        cfg.data = clean(data);
+        cfg.data = pad(clean(data));
+        bucketedData = bucket(cfg.data);
         for (var key in _cfg) {
             cfg[key] = _cfg[key];
         } element = _element;
@@ -60,7 +62,7 @@ var PeriodBarChart = function() {
             });
             entry.wake = midnight;
         }
-        return pad(data);
+        return data;
     }
 
 
@@ -98,6 +100,25 @@ var PeriodBarChart = function() {
     }
 
 
+    function bucket(data) {
+        // Bucket data by sleep date.
+        var entries = [];
+        var dayBucket = [];
+        for (var i = 0; i < data.length; i++) {
+            // Lookahead.
+            if (dayBucket.length === 0 || ds(data[i]) == ds(dayBucket[0])) {
+                dayBucket.push(data[i]);
+            } else {
+                entries.push(dayBucket);
+                dayBucket = [data[i]];
+            }
+        }
+        entries.push(dayBucket);
+        return entries;
+
+            }
+
+
     function draw(element) {
         // Create canvas.
         this.chart = d3.select(element)
@@ -107,7 +128,7 @@ var PeriodBarChart = function() {
 
         // Create scales.
         var xScale = d3.scale.linear()
-            .domain([0, cfg.data.length])
+            .domain([0, bucketedData.length])
             .range([0, cfg.chart.width - cfg.yAxis.padding]);
 
         var yScale = d3.scale.linear()
@@ -121,7 +142,7 @@ var PeriodBarChart = function() {
                     0+ ')');
 
         // Awake bars.
-        var rectWidth = (cfg.chart.width - cfg.yAxis.padding) / cfg.data.length;
+        var rectWidth = (cfg.chart.width - cfg.yAxis.padding) / bucketedData.length;
         chartGroup.selectAll('rect.awake')
             .data(cfg.data)
             .enter()
@@ -133,7 +154,7 @@ var PeriodBarChart = function() {
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
             .attr('x', function(d, i) {
-                return xScale(i - collapse(d, i));
+                return xScale(getBucketedIndex(d));
             })
             .attr('y', function(d, i) {
                 return yScale(0);
@@ -152,7 +173,7 @@ var PeriodBarChart = function() {
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
             .attr('x', function(d, i) {
-                return xScale(i - collapse(d, i));
+                return xScale(getBucketedIndex(d));
             })
             .attr('y', function(d, i) {
                 return yScale(_daySecs(d.sleep));
@@ -167,7 +188,7 @@ var PeriodBarChart = function() {
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('text-anchor', 'middle')
             .attr('x', function(d, i) {
-                return xScale(i) + rectWidth / 2;
+                return xScale(getBucketedIndex(d)) + rectWidth / 2;
             })
             .attr('y', cfg.chart.height - cfg.chart.axisPadding)
             .text(function(d, i) {
@@ -203,16 +224,12 @@ var PeriodBarChart = function() {
     }
 
 
-    function collapse(d, i) {
-        // Collapse same-date sleep periods into one column.
-        var collapseIndex = 0;
-        var sleepDate = d.sleep.toDateString();
-        if (i > 0 && sleepDate == cfg.data[i - 1].sleep.toDateString()) {
-            while (i - collapseIndex > 0 && sleepDate == cfg.data[i - collapseIndex].sleep.toDateString()) {
-                collapseIndex++;
+    function getBucketedIndex(d) {
+        for (var i = 0; i < bucketedData.length; i++) {
+            if (ds(d) == ds(bucketedData[i][0])) {
+                return i;
             }
         }
-        return collapseIndex;
     }
 
 
@@ -231,6 +248,11 @@ var PeriodBarChart = function() {
         return (
             date.getTime() -
             new Date(date.getTime()).setHours(0, 0, 0, 0)) / 1000;
+    }
+
+
+    function ds(d) {
+        return d.sleep.toDateString();
     }
 
 
