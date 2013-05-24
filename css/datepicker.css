@@ -17,7 +17,7 @@
       background: #373737;
       color: whitesmoke; }
       .datepicker table td.selected:hover {
-        background: #6e6e6e; }
+        background: #646464; }
 .datepicker .heading {
   height: 32px;
   position: relative; }
@@ -28,7 +28,7 @@
     top: 3px;
     width: 20px; }
     .datepicker .heading img:hover {
-      background: #6e6e6e; }
+      background: #646464; }
   .datepicker .heading .month, .datepicker .heading .year {
     position: absolute; }
     .datepicker .heading .month h3, .datepicker .heading .year h3 {
@@ -55,7 +55,7 @@
     text-align: center; }
   .timepicker .time {
     background: #373737;
-    border: 1px solid #6e6e6e;
+    border: 1px solid #646464;
     border-radius: 2px;
     display: inline-block;
     color: whitesmoke;
@@ -92,7 +92,7 @@
     width: 100%;
     padding: 8px 0; }
     .timepicker .submit:hover {
-      background: #6e6e6e; }
+      background: #646464; }
 
 .entries {
   display: none;

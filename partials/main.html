@@ -1,8 +1,11 @@
 <div class="chart-filters">
   <div class="chart-tabs">
-    <span ng-click="rangeDays = 7" class="btn">Week</span>
-    <span ng-click="rangeDays = 30" class="btn">Month</span>
-    <span ng-click="rangeDays = -1" class="btn">All</span>
+    <span ng-class="{'selected': rangeDays == 7}" ng-click="rangeDays = 7"
+          class="btn">Week</span>
+    <span ng-class="{'selected': rangeDays == 30}" ng-click="rangeDays = 30"
+          class="btn">Month</span>
+    <span ng-class="{'selected': rangeDays == -1}" ng-click="rangeDays = -1"
+          class="btn">All</span>
   </div>
 </div>
 

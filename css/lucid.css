@@ -25,9 +25,9 @@ img.icon {
     height: 16px;
     width: 16px; }
   img.icon.dark, img.icon:hover {
-    background: #6e6e6e; }
+    background: #373737; }
   img.icon.dark:hover {
-    background: gainsboro; }
+    background: #646464; }
 
 .back {
   left: 10px;
@@ -35,7 +35,7 @@ img.icon {
   top: 4px; }
 
 .navbar {
-  background: #6e6e6e;
+  background: #646464;
   border-bottom: 1px solid #050505;
   margin-bottom: 16px;
   padding-top: 8px;
@@ -67,12 +67,16 @@ img.icon {
       border-right: 1px solid #050505;
       border-left: 1px solid #050505;
       padding: 4px 8px; }
+      .chart-filters .chart-tabs span.selected {
+        background: gainsboro; }
+        .chart-filters .chart-tabs span.selected:hover {
+          cursor: default; }
 
 .chart {
-  background: #6e6e6e;
+  background: #646464;
   border: 1px #373737 solid;
   border-radius: 2px;
-  height: 200px;
+  height: 240px;
   margin: 16px auto 16px;
   width: 300px; }
 
@@ -84,15 +88,14 @@ img.icon {
     padding: 4px 8px; }
 
 .record {
-  border: 1px solid #050505;
-  border-radius: 100px;
-  height: 120px;
-  margin: 0 auto;
-  text-align: center;
-  width: 120px; }
-  .record span {
-    position: relative;
-    top: 50px; }
+  background: #373737;
+  bottom: 0;
+  color: whitesmoke;
+  position: absolute;
+  width: 100%;
+  padding: 8px 0; }
+  .record:hover {
+    background: #646464; }
 
 .entry {
   margin-bottom: 16px; }

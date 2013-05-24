@@ -33,10 +33,10 @@ img.icon {
         width: 16px;
     }
     &.dark, &:hover {
-        background: $gray;
+        background: $dark-gray;
     }
     &.dark:hover {
-        background: $light-gray;
+        background: $gray;
     }
 }
 
@@ -83,6 +83,12 @@ img.icon {
             border-right: 1px solid $black;
             border-left: 1px solid $black;
             padding: 4px 8px;
+            &.selected {
+                background: $light-gray;
+                &:hover {
+                    cursor: default;
+                }
+            }
         }
     }
 }
@@ -91,7 +97,7 @@ img.icon {
     background: $gray;
     border: 1px $dark-gray solid;
     border-radius: 2px;
-    height: 200px;
+    height: 240px;
     margin: 16px auto 16px;
     width: 300px;
 }
@@ -105,16 +111,16 @@ img.icon {
     }
 }
 
+
 .record {
-    border: 1px solid $black;
-    border-radius: 100px;
-    height: 120px;
-    margin: 0 auto;
-    text-align: center;
-    width: 120px;
-    span {
-        position: relative;
-        top: 50px;
+    background: $dark-gray;
+    bottom: 0;
+    color:  $white;
+    position: absolute;
+    width: 100%;
+    padding: 8px 0;
+    &:hover {
+        background: $gray;
     }
 }
 

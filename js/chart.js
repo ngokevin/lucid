@@ -13,7 +13,7 @@ var PeriodBarChart = function() {
             axisPadding: 3,
             fontColor: 'rgb(245, 245, 245)',
             fontSize: '12',
-            height: 200,
+            height: 240,
             opacity: '.95',
             topPadding: 15,
             title: 'Sleep Chart',
