@@ -7,6 +7,7 @@ var PeriodBarChart = function() {
 
     var cfg = {
         chart: {
+            axisPadding: 3,
             fontColor: 'rgb(245, 245, 245)',
             fontSize: '12',
             height: 200,
@@ -21,11 +22,11 @@ var PeriodBarChart = function() {
         },
         xAxis: {
             title: 'Date',
-            padding: 12
+            padding: 5
         },
         yAxis: {
             title: 'Time',
-            padding: 30
+            padding: 35
         }
     };
 
@@ -60,8 +61,7 @@ var PeriodBarChart = function() {
             if (entry.sleep.getDate() == entry.wake.getDate() ||
                 (entry.wake.getHours() == 0 && entry.wake.getMinutes() == 0)) {
                 // Don't need to do anything if sleep and wake on same day.
-                continue;
-            }
+                continue; }
 
             midnight = new Date(entry.wake.getTime());
             midnight.setHours(0, 0);
@@ -104,8 +104,7 @@ var PeriodBarChart = function() {
             .data(cfg.data)
             .enter()
             .append('svg:rect')
-            .attr('class', 'awake')
-            .attr('fill', cfg.rect.inactiveColor)
+            .attr('class', 'awake') .attr('fill', cfg.rect.inactiveColor)
             .attr('height', function(d, i) {
                 return yScale(DAY_SECS) - yScale(0);
             })
@@ -148,7 +147,7 @@ var PeriodBarChart = function() {
             .attr('x', function(d, i) {
                 return xScale(i) + rectWidth / 2;
             })
-            .attr('y', cfg.chart.height)
+            .attr('y', cfg.chart.height - cfg.chart.axisPadding)
             .text(function(d, i) {
                 return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
             });
@@ -161,6 +160,7 @@ var PeriodBarChart = function() {
             .attr('class', 'yAxis')
             .attr('fill', cfg.chart.fontColor)
             .attr('font-size', cfg.chart.fontSize + 'px')
+            .attr('x', cfg.chart.axisPadding)
             .attr('y', function(d) {
                 return yScale(d) + cfg.chart.fontSize / 2;
             })
