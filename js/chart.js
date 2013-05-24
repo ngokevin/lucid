@@ -205,7 +205,8 @@ var PeriodBarChart = function() {
             });
 
         // X axis text.
-        chartGroup.selectAll('text.xAxis') .data(cfg.data)
+        chartGroup.selectAll('text.xAxis')
+            .data(cfg.data)
             .enter()
             .append('svg:text')
             .attr('class', 'xAxis')
@@ -217,7 +218,15 @@ var PeriodBarChart = function() {
             })
             .attr('y', cfg.chart.height - cfg.chart.axisPadding)
             .text(function(d, i) {
-                return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
+                var modDays = cfg.xAxis.days;
+                if (cfg.xAxis.days === -1) {
+                    // Case where we show every day.
+                    modDays = bucketedData.length;
+                }
+                // Show only every 7 dates on xAxis.
+                if (getBucketedIndex(d) % parseInt(modDays / 7, 10) === 0) {
+                    return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
+                }
             });
 
         // Y axis text.
@@ -283,6 +292,6 @@ var PeriodBarChart = function() {
 
     return {
         'periodBarChart': periodBarChart,
-        'changeDays': changeDays,
+        'changeDays': changeDays
     };
 };
