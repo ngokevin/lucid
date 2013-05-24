@@ -4,10 +4,20 @@ angular.module('LucidApp')
 .controller('MainCtrl', ['$scope', 'EntryService',
                          function ($scope, EntryService) {
     $scope.entries = EntryService.get();
-    PeriodBarChart().periodBarChart('.chart', $scope.entries, {
+    $scope.rangeDays = 7;
+
+    var chart = PeriodBarChart();
+    chart.periodBarChart('.chart', $scope.entries, {
         xAxis: {
-            days: 30
+            days: $scope.rangeDays
         }
+    });
+
+    $scope.$watch('rangeDays', function(days, oldDays) {
+        if (days === oldDays) {
+            return;
+        }
+        chart.changeDays(days);
     });
 }])
 

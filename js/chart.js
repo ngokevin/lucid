@@ -4,7 +4,9 @@ var PeriodBarChart = function() {
     var chart;
     var chartGroup;
     var element;
+
     var bucketedData;
+    var rawData;
 
     var cfg = {
         chart: {
@@ -32,12 +34,23 @@ var PeriodBarChart = function() {
 
 
     var periodBarChart = function(_element, data, _cfg) {
+        rawData = data;
         cfg = $.extend(true, {}, cfg, _cfg);
-        cfg.data = pad(clean(trim(data)));
+        if (cfg.xAxis.days !== -1) {
+            data = trim(data);
+        }
+        cfg.data = pad(clean(data));
         bucketedData = bucket(cfg.data);
         element = _element;
         draw(element);
     };
+
+
+    function changeDays(days) {
+        $(element + ' svg').remove();
+        cfg.xAxis.days = days;
+        periodBarChart(element, rawData);
+    }
 
 
     function clean(data) {
@@ -269,6 +282,7 @@ var PeriodBarChart = function() {
 
 
     return {
-        'periodBarChart': periodBarChart
+        'periodBarChart': periodBarChart,
+        'changeDays': changeDays,
     };
 };
