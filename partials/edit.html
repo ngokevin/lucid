@@ -53,3 +53,20 @@
   <span>hrs</span>
   <div ng-click="addSleep()" class="submit btn">Add Sleep Session</div>
 </div>
+
+<div class="entries">
+  <table>
+    <thead>
+      <tr>
+        <th>Sleep</th>
+        <th>Wake</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="entry in entries | filter:inSelectedDate">
+        <td>{{ entry.sleep | date:'shortTime' }}</td>
+        <td>{{ entry.wake | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

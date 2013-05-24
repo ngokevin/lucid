@@ -85,6 +85,9 @@ angular.module('LucidApp')
         if (date.toDateString() != $scope.selectedDate.toDateString()) {
             $('td').removeClass('selected');
             $scope.selectedDate = date;
+        } else {
+            $('.datepicker').slideUp();
+            $('.entries').show();
         }
     };
 
@@ -102,5 +105,14 @@ angular.module('LucidApp')
 
     $scope.changeDuration = function(duration) {
         $scope.duration += duration;
+    };
+
+    $scope.inSelectedDate = function(date) {
+        var sleep = date.sleep;
+        var selected = $scope.selectedDate;
+        return (
+            sleep.getFullYear() === selected.getFullYear() &&
+            sleep.getMonth() === selected.getMonth() &&
+            sleep.getDate() === selected.getDate());
     };
 }]);

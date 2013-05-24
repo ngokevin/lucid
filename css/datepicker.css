@@ -44,53 +44,63 @@ img.icon {
   .datepicker .heading .year {
     right: 24px; }
 
-.timepicker strong {
-  display: block;
-  margin-bottom: 24px;
-  position: relative;
-  right: 4px; }
-.timepicker input {
-  display: inline;
-  font-size: 24px;
-  width: 40px;
-  text-align: center; }
-.timepicker .time {
-  background: #373737;
-  border: 1px solid #6e6e6e;
-  border-radius: 2px;
-  display: inline-block;
-  color: whitesmoke;
-  font-size: 24px;
-  min-width: 30px;
-  padding: 6px; }
-  .timepicker .time.meridiem {
-    font-family: monospace; }
-.timepicker .duration {
-  display: inline-block;
-  position: relative; }
-  .timepicker .duration img {
-    border-radius: 1px;
-    position: absolute; }
-    .timepicker .duration img.inc {
-      -moz-transform: rotate(90deg) scaleY(2.75);
-      -ms-transform: rotate(90deg) scaleY(2.75);
-      -o-transform: rotate(90deg) scaleY(2.75);
-      -webkit-transform: rotate(90deg) scaleY(2.75);
-      left: 15px;
-      top: -16px; }
-    .timepicker .duration img.dec {
-      -moz-transform: rotate(-90deg) scaleY(2.75);
-      -ms-transform: rotate(-90deg) scaleY(2.75);
-      -o-transform: rotate(-90deg) scaleY(2.75);
-      -webkit-transform: rotate(-90deg) scaleY(2.75);
-      bottom: -16px;
-      left: 15px; }
-.timepicker .submit {
-  background: #373737;
-  bottom: 0;
-  color: whitesmoke;
-  position: absolute;
-  width: 100%;
-  padding: 8px 0; }
-  .timepicker .submit:hover {
-    background: #6e6e6e; }
+.timepicker {
+  margin-bottom: 24px; }
+  .timepicker strong {
+    display: block;
+    margin-bottom: 24px;
+    position: relative;
+    right: 4px; }
+  .timepicker input {
+    display: inline;
+    font-size: 24px;
+    width: 40px;
+    text-align: center; }
+  .timepicker .time {
+    background: #373737;
+    border: 1px solid #6e6e6e;
+    border-radius: 2px;
+    display: inline-block;
+    color: whitesmoke;
+    font-size: 24px;
+    min-width: 30px;
+    padding: 6px; }
+    .timepicker .time.meridiem {
+      font-family: monospace; }
+  .timepicker .duration {
+    display: inline-block;
+    position: relative; }
+    .timepicker .duration img {
+      border-radius: 1px;
+      position: absolute; }
+      .timepicker .duration img.inc {
+        -moz-transform: rotate(90deg) scaleY(2.75);
+        -ms-transform: rotate(90deg) scaleY(2.75);
+        -o-transform: rotate(90deg) scaleY(2.75);
+        -webkit-transform: rotate(90deg) scaleY(2.75);
+        left: 15px;
+        top: -16px; }
+      .timepicker .duration img.dec {
+        -moz-transform: rotate(-90deg) scaleY(2.75);
+        -ms-transform: rotate(-90deg) scaleY(2.75);
+        -o-transform: rotate(-90deg) scaleY(2.75);
+        -webkit-transform: rotate(-90deg) scaleY(2.75);
+        bottom: -16px;
+        left: 15px; }
+  .timepicker .submit {
+    background: #373737;
+    bottom: 0;
+    color: whitesmoke;
+    position: absolute;
+    width: 100%;
+    padding: 8px 0; }
+    .timepicker .submit:hover {
+      background: #6e6e6e; }
+
+.entries {
+  display: none; }
+  .entries table {
+    margin: 0 auto 8px;
+    text-align: center; }
+    .entries table td {
+      padding: 8px; }

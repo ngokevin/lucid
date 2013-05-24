@@ -66,6 +66,7 @@ img.icon {
 }
 
 .timepicker {
+    margin-bottom: 24px;
     strong {
         display: block;
         margin-bottom: 24px;
@@ -118,6 +119,17 @@ img.icon {
         padding: 8px 0;
         &:hover {
             background: $gray;
+        }
+    }
+}
+
+.entries {
+    display: none;
+    table {
+        margin: 0 auto 8px;
+        text-align: center;
+        td {
+            padding: 8px;
         }
     }
 }
