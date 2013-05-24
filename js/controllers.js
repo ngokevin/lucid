@@ -21,7 +21,7 @@ angular.module('LucidApp')
     $scope.duration = 8;
 
     $scope.addSleep = function() {
-        var sleepDate = new Date($scope.date.getTime());
+        var sleepDate = new Date($scope.selectedDate.getTime());
         var hour = $scope.hour;
         if ($scope.meridiem == 'pm') {
             hour += 12;

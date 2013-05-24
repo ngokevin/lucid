@@ -30,18 +30,6 @@ var PeriodBarChart = function() {
         }
     };
 
-    var _cfg = function(attr, val) {
-        if (val) {
-            cfg[attr] = val;
-
-            // Redraw.
-            d3.select(element).remove();
-            draw(element);
-        } else {
-            return cfg[attr];
-        }
-    };
-
 
     var periodBarChart = function(_element, data, _cfg) {
         cfg.data = clean(data);
@@ -59,9 +47,10 @@ var PeriodBarChart = function() {
         for (var i = 0; i < data.length; i++) {
             entry = data[i];
             if (entry.sleep.getDate() == entry.wake.getDate() ||
-                (entry.wake.getHours() == 0 && entry.wake.getMinutes() == 0)) {
+                (entry.wake.getHours() === 0 && entry.wake.getMinutes() === 0)) {
                 // Don't need to do anything if sleep and wake on same day.
-                continue; }
+                continue;
+            }
 
             midnight = new Date(entry.wake.getTime());
             midnight.setHours(0, 0);
@@ -69,7 +58,6 @@ var PeriodBarChart = function() {
                 sleep: midnight,
                 wake: new Date(entry.wake.getTime())
             });
-
             entry.wake = midnight;
         }
         return data;
@@ -200,7 +188,6 @@ var PeriodBarChart = function() {
 
 
     return {
-        'periodBarChart': periodBarChart,
-        'cfg': _cfg
+        'periodBarChart': periodBarChart
     };
 };
