@@ -1,11 +1,3 @@
-img.icon {
-  background: gainsboro;
-  display: inline-block;
-  height: 16px;
-  width: 16px; }
-  img.icon.dark, img.icon:hover {
-    background: #6e6e6e; }
-
 .datepicker table {
   margin: 0 auto 8px;
   text-align: center; }
@@ -113,4 +105,4 @@ img.icon {
     .entries table td {
       border-top: 1px solid whitesmoke;
       border-bottom: 1px solid whitesmoke;
-      padding: 15px; }
+      padding: 15px 8px; }

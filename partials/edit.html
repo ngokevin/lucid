@@ -7,14 +7,14 @@
 <div class="datepicker">
   <div class="heading c">
     <div class="month">
-      <img ng-click="changeMonth(-1)" class="icon" src="img/back.png">
+      <img ng-click="changeMonth(-1)" class="icon small" src="img/back.png">
       <h3>{{ date | date:'MMMM' }}</h3>
-      <img ng-click="changeMonth(1)" class="icon" src="img/forward.png">
+      <img ng-click="changeMonth(1)" class="icon small" src="img/forward.png">
     </div>
     <div class="year">
-      <img ng-click="changeYear(-1)" class="icon" src="img/back.png">
+      <img ng-click="changeYear(-1)" class="icon small" src="img/back.png">
       <h3>{{ date | date:'yyyy' }}</h3>
-      <img ng-click="changeYear(1)" class="icon" src="img/forward.png">
+      <img ng-click="changeYear(1)" class="icon small" src="img/forward.png">
     </div>
   </div>
   <table>
@@ -36,7 +36,7 @@
 
 <div class="timepicker">
   <strong>
-    <img class="icon dark" src="img/today.png">
+    <img class="icon small dark" src="img/today.png">
     {{ selectedDate | date:'longDate' }}
   </strong>
 
@@ -45,9 +45,9 @@
   <span ng-click="togMeridiem()" class="btn time meridiem">{{ meridiem }}</span>
   <span>for</span>
   <div class="duration">
-    <img ng-click="changeDuration(.5)" class="btn icon inc" src="img/back.png">
+    <img ng-click="changeDuration(.5)" class="btn icon small inc" src="img/back.png">
     <input ng-model="duration" type="number" min="0">
-    <img ng-click="changeDuration(-.5)" class="btn icon dec" src="img/back.png">
+    <img ng-click="changeDuration(-.5)" class="btn icon small dec" src="img/back.png">
   </div>
 
   <span>hrs</span>
@@ -60,12 +60,16 @@
       <tr>
         <th>Sleep</th>
         <th>Wake</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="entry in entries | filter:inSelectedDate">
         <td>{{ entry.sleep | date:'shortTime' }}</td>
         <td>{{ entry.wake | date:'short' }}</td>
+        <td>
+          <img ng-click="deleteEntry($index)" class="btn icon dark" src="img/delete.png">
+        </td>
       </tr>
     </tbody>
   </table>

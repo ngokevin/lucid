@@ -1,68 +1,58 @@
 @import 'globals';
 
 
-img.icon {
-    background: $light-gray;
-    display: inline-block;
-    height: 16px;
-    width: 16px;
-    &.dark, &:hover {
-        background: $gray;
-    }
-}
-
 .datepicker {
     table {
-         margin: 0 auto 8px;
-         text-align: center;
-         td {
-             border-radius: 2px;
-             padding: 7px;
-             &:hover, &.selected {
-                cursor: pointer;
-             }
-             &:hover {
-                background: $light-gray;
-             }
-             &.selected {
-                background: $dark-gray;
-                color: $white;
-                &:hover {
-                    background: $gray;
-                }
-             }
-         }
-     }
-     .heading {
-         height: 32px;
-         position: relative;
-         img {
-             cursor: pointer;
-             height: 20px;
-             position: relative;
-             top: 3px;
-             width: 20px;
-             &:hover {
-                 background: $gray;
-             }
-         }
-         .month, .year {
-             position: absolute;
-             h3 {
-                 display: inline-block;
-                 margin: 0;
-             }
-         }
-         .month {
-             left: 24px;
-             h3 {
-                 width: 106px;
-             }
-         }
-         .year {
-             right: 24px;
-         }
-     }
+        margin: 0 auto 8px;
+        text-align: center;
+        td {
+            border-radius: 2px;
+            padding: 7px;
+            &:hover, &.selected {
+               cursor: pointer;
+            }
+            &:hover {
+               background: $light-gray;
+            }
+            &.selected {
+               background: $dark-gray;
+               color: $white;
+               &:hover {
+                   background: $gray;
+               }
+            }
+        }
+    }
+    .heading {
+        height: 32px;
+        position: relative;
+        img {
+            cursor: pointer;
+            height: 20px;
+            position: relative;
+            top: 3px;
+            width: 20px;
+            &:hover {
+                background: $gray;
+            }
+        }
+        .month, .year {
+            position: absolute;
+            h3 {
+                display: inline-block;
+                margin: 0;
+            }
+        }
+        .month {
+            left: 24px;
+            h3 {
+                width: 106px;
+            }
+        }
+        .year {
+            right: 24px;
+        }
+    }
 }
 
 .timepicker {
@@ -141,7 +131,7 @@ img.icon {
         td {
             border-top: 1px solid $white;
             border-bottom: 1px solid $white;
-            padding: 15px;
+            padding: 15px 8px;
         }
     }
 }

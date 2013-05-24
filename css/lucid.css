@@ -15,10 +15,19 @@ body {
   background: gainsboro;
   cursor: pointer; }
 
-.icon {
+img.icon {
+  background: gainsboro;
   border-radius: 2px;
+  display: inline-block;
   height: 30px;
   width: 30px; }
+  img.icon.small {
+    height: 16px;
+    width: 16px; }
+  img.icon.dark, img.icon:hover {
+    background: #6e6e6e; }
+  img.icon.dark:hover {
+    background: gainsboro; }
 
 .back {
   left: 10px;
@@ -39,7 +48,7 @@ body {
     margin: 0;
     position: relative; }
   .navbar .edit {
-    bottom: 3px;
+    bottom: 0px;
     position: absolute;
     right: 10px; }
 

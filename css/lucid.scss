@@ -22,11 +22,24 @@ body {
     }
 }
 
-.icon {
+img.icon {
+    background: $light-gray;
     border-radius: 2px;
+    display: inline-block;
     height: 30px;
     width: 30px;
+    &.small {
+        height: 16px;
+        width: 16px;
+    }
+    &.dark, &:hover {
+        background: $gray;
+    }
+    &.dark:hover {
+        background: $light-gray;
+    }
 }
+
 
 .back {
     left: 10px;
@@ -49,7 +62,7 @@ body {
         position: relative;
     }
     .edit {
-        bottom: 3px;
+        bottom: 0px;
         position: absolute;
         right: 10px;
     }

@@ -117,4 +117,8 @@ angular.module('LucidApp')
             sleep.getMonth() === selected.getMonth() &&
             sleep.getDate() === selected.getDate());
     };
+
+    $scope.deleteEntry = function(i) {
+        $scope.entries = EntryService.del(i);
+    };
 }]);
