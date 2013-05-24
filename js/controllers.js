@@ -36,7 +36,7 @@ angular.module('LucidApp')
             sleep: sleepDate,
             wake: wakeDate
         });
-    }
+    };
 
     buildCalendar();
     function buildCalendar() {
