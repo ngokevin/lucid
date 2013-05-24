@@ -60,7 +60,41 @@ var PeriodBarChart = function() {
             });
             entry.wake = midnight;
         }
-        return data;
+        return pad(data);
+    }
+
+
+    function pad(data) {
+        // Add missing dates with dummy data (assume sorted data).
+        var entries = [];
+        var todayDate, tmrDate, nextDate, currentDate;
+        for (var i = 0; i < data.length; i++) {
+            entries.push(data[i]);
+            if (i === data.length - 1) {
+                break;
+            }
+
+            // Lookahead.
+            todayDate = data[i].sleep;
+            tmrDate = new Date(data[i].sleep.getTime());
+            tmrDate.setDate(tmrDate.getDate() + 1);
+            nextDate = data[i + 1].sleep;
+
+            if (todayDate.toDateString() != nextDate.toDateString() &&
+                tmrDate.toDateString() != nextDate.toDateString()) {
+                // If next date is not today or not tomorrow, fill gap.
+                currentDate = tmrDate;
+                currentDate.setHours(0, 0, 0);
+                while (currentDate.toDateString() != nextDate.toDateString()) {
+                    entries.push({
+                        sleep: new Date(currentDate.getTime()),
+                        wake: new Date(currentDate.getTime())
+                    });
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+            }
+        }
+        return entries;
     }
 
 

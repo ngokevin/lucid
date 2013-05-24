@@ -46,8 +46,13 @@ angular.module('LucidApp', [])
             localStorage.setItem('entries', stringify(entries));
             return entries;
         },
-        del: function(i) {
-            entries.splice(i, 1);
+        del: function(sleepDate) {
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].sleep == sleepDate) {
+                    entries.splice(i, 1);
+                    break;
+                }
+            }
             localStorage.setItem('entries', stringify(entries));
             return entries;
         }

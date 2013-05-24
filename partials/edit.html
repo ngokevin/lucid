@@ -74,7 +74,8 @@
         <td>{{ entry.sleep | date:'shortTime' }}</td>
         <td>{{ entry.wake | date:'short' }}</td>
         <td>
-          <img ng-click="deleteEntry($index)" class="btn icon dark" src="img/delete.png">
+          <img ng-click="deleteEntry(entry.sleep)" class="btn icon dark"
+               src="img/delete.png">
         </td>
       </tr>
     </tbody>
