@@ -133,7 +133,7 @@ var PeriodBarChart = function() {
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
             .attr('x', function(d, i) {
-                return xScale(i);
+                return xScale(i - collapse(d, i));
             })
             .attr('y', function(d, i) {
                 return yScale(0);
@@ -152,7 +152,7 @@ var PeriodBarChart = function() {
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
             .attr('x', function(d, i) {
-                return xScale(i);
+                return xScale(i - collapse(d, i));
             })
             .attr('y', function(d, i) {
                 return yScale(_daySecs(d.sleep));
@@ -200,6 +200,19 @@ var PeriodBarChart = function() {
                 }
                 return hour;
             });
+    }
+
+
+    function collapse(d, i) {
+        // Collapse same-date sleep periods into one column.
+        var collapseIndex = 0;
+        var sleepDate = d.sleep.toDateString();
+        if (i > 0 && sleepDate == cfg.data[i - 1].sleep.toDateString()) {
+            while (i - collapseIndex > 0 && sleepDate == cfg.data[i - collapseIndex].sleep.toDateString()) {
+                collapseIndex++;
+            }
+        }
+        return collapseIndex;
     }
 
 
