@@ -98,9 +98,19 @@ img.icon {
       background: #6e6e6e; }
 
 .entries {
-  display: none; }
+  display: none;
+  max-height: 300px;
+  overflow: auto; }
   .entries table {
+    background: white;
+    border-radius: 2px;
     margin: 0 auto 8px;
     text-align: center; }
+    .entries table th {
+      padding: 10px; }
+    .entries table tr {
+      margin: 0; }
     .entries table td {
-      padding: 8px; }
+      border-top: 1px solid whitesmoke;
+      border-bottom: 1px solid whitesmoke;
+      padding: 15px; }

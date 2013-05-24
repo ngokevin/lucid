@@ -86,8 +86,10 @@ angular.module('LucidApp')
             $('td').removeClass('selected');
             $scope.selectedDate = date;
         } else {
-            $('.datepicker').slideUp();
-            $('.entries').show();
+            $('.datepicker').slideUp(400);
+            setTimeout(function() {
+                $('.entries').show();
+            }, 400);
         }
     };
 
