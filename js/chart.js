@@ -107,7 +107,7 @@ var PeriodBarChart = function() {
             .attr('class', 'awake')
             .attr('fill', cfg.rect.inactiveColor)
             .attr('height', function(d, i) {
-                return yScale(DAY_SECS);
+                return yScale(DAY_SECS) - yScale(0);
             })
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
@@ -126,7 +126,7 @@ var PeriodBarChart = function() {
             .attr('class', 'sleep')
             .attr('fill', cfg.rect.activeColor)
             .attr('height', function(d, i) {
-                return yScale((d.wake.getTime() - d.sleep.getTime()) / 1000);
+                return yScale((d.wake.getTime() - d.sleep.getTime()) / 1000) - yScale(0);
             })
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
@@ -134,12 +134,11 @@ var PeriodBarChart = function() {
                 return xScale(i);
             })
             .attr('y', function(d, i) {
-                return cfg.chart.height - cfg.xAxis.padding - yScale(DAY_SECS - _daySecs(d.sleep));
+                return yScale(_daySecs(d.sleep));
             });
 
         // X axis text.
-        chartGroup.selectAll('text.xAxis')
-            .data(cfg.data)
+        chartGroup.selectAll('text.xAxis') .data(cfg.data)
             .enter()
             .append('svg:text')
             .attr('class', 'xAxis')
@@ -163,7 +162,7 @@ var PeriodBarChart = function() {
             .attr('fill', cfg.chart.fontColor)
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('y', function(d) {
-                return yScale(d) + cfg.chart.fontSize / 2 - 2;
+                return yScale(d) + cfg.chart.fontSize / 2;
             })
             .text(function(d, i) {
                 var hour = d / 60 / 60;
