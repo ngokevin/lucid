@@ -1,10 +1,10 @@
-<span class="btn icon back">
+<span class="icon back">
   <a href="#/">
     <img src="img/back.png">
   </a>
 </span>
 
-<span ng-click="toggleDatePicker()" class="btn icon edit toggle-picker">
+<span ng-click="toggleDatePicker()" class="icon edit toggle-picker">
   <a href="#/edit">
     <img src="img/month.png">
   </a>
@@ -60,7 +60,10 @@
   </div>
 
   <span>hrs</span>
-  <div ng-click="addSleep()" class="submit btn">Add Sleep Session</div>
+  <div ng-click="addSleep()" class="submit btn">
+    <img class="inline-icon" src="img/add.png">
+    Add Sleep Session
+  </div>
 </div>
 
 <div class="entries">
@@ -69,7 +72,7 @@
       <tr>
         <th>Sleep</th>
         <th>Wake</th>
-        <th></th>
+        <th>-</th>
       </tr>
     </thead>
     <tbody>

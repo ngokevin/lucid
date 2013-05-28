@@ -10,15 +10,18 @@
 </div>
 
 <div class="chart"></div>
+<span ng-show="entries.length == 0" class="empty-msg">
+  No sleep entries yet.
+</span>
 
-<div class="chart-switches">
+<!-- <div class="chart-switches">
   <span class="btn">Trends</span>
   <span class="btn">Stats</span>
-</div>
+</div> -->
 
 <div ng-click="toggleRecord()" class="record btn">
   <span ng-class="{'awake': !recording}">
-    <img ng-show="recording" class="sleeping" src="img/stop.png">
+    <img ng-show="recording" class="sleeping inline-icon" src="img/stop.png">
     {{ recording && 'Recording Sleep...' || 'Record Sleep' }}
   </span>
 </div>

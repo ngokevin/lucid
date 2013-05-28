@@ -29,6 +29,12 @@ img.icon {
   img.icon.dark:hover {
     background: #646464; }
 
+.inline-icon {
+  height: 16px;
+  position: relative;
+  top: 2px;
+  width: 16px; }
+
 .back {
   left: 10px;
   position: absolute;
@@ -43,6 +49,8 @@ img.icon {
   .navbar h2 {
     bottom: 4px;
     color: whitesmoke;
+    font-family: "Oleo Script Swash Caps", cursive;
+    font-size: 20px;
     display: inline;
     font-weight: normal;
     margin: 0;
@@ -80,6 +88,13 @@ img.icon {
   margin: 16px auto 16px;
   width: 300px; }
 
+.empty-msg {
+  color: gainsboro;
+  font-style: italic;
+  position: absolute;
+  right: 20px;
+  top: 197px; }
+
 .chart-switches {
   margin-bottom: 24px; }
   .chart-switches span {
@@ -101,11 +116,6 @@ img.icon {
     border-radius: 20px;
     content: '';
     display: inline-block;
-    height: 16px;
-    position: relative;
-    top: 2px;
-    width: 16px; }
-  .record img.sleeping {
     height: 16px;
     position: relative;
     top: 2px;

@@ -40,6 +40,13 @@ img.icon {
     }
 }
 
+.inline-icon {
+    height: 16px;
+    position: relative;
+    top: 2px;
+    width: 16px;
+}
+
 
 .back {
     left: 10px;
@@ -56,6 +63,8 @@ img.icon {
     h2 {
         bottom: 4px;
         color: $white;
+        font-family: 'Oleo Script Swash Caps', cursive;
+        font-size: 20px;
         display: inline;
         font-weight: normal;
         margin: 0;
@@ -102,6 +111,14 @@ img.icon {
     width: 300px;
 }
 
+.empty-msg {
+    color: $light-gray;
+    font-style: italic;
+    position: absolute;
+    right: 20px;
+    top: 197px;
+}
+
 .chart-switches {
     margin-bottom: 24px;
     span {
@@ -127,12 +144,6 @@ img.icon {
         border-radius: 20px;
         content: '';
         display: inline-block;
-        height: 16px;
-        position: relative;
-        top: 2px;
-        width: 16px;
-    }
-    img.sleeping {
         height: 16px;
         position: relative;
         top: 2px;
