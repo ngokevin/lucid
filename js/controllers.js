@@ -152,9 +152,27 @@ angular.module('LucidApp')
     };
 
     $scope.toggleDatePicker = function() {
-        $('.datepicker').slideToggle();
-        setTimeout(function() {
+        if ($('.datepicker').is(':visible')) {
+            $('.datepicker').slideToggle();
+            setTimeout(function() {
+                $('.entries').toggle();
+            }, 400);
+        } else {
             $('.entries').toggle();
-        }, 200);
+            $('.datepicker').slideToggle();
+        }
+    };
+
+    $scope.containsSleep = function(date) {
+        // Check whether date contains data.
+        var sleep;
+        for (var i = 0; i < $scope.entries.length; i++) {
+            sleep = $scope.entries[i].sleep;
+            if (date.getFullYear() === sleep.getFullYear() &&
+                date.getMonth() === sleep.getMonth() &&
+                date.getDate() === sleep.getDate()) {
+                return true;
+            }
+        }
     };
 }]);

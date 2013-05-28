@@ -18,6 +18,17 @@
       color: whitesmoke; }
       .datepicker table td.selected:hover {
         background: #646464; }
+    .datepicker table td.marked:after {
+      border-bottom: 6px solid #646464;
+      border-left: 6px solid transparent;
+      content: '';
+      display: inline-block;
+      height: 0;
+      margin-top: 18px;
+      position: absolute;
+      width: 0; }
+    .datepicker table td.selected.marked:after {
+      border-bottom: 6px solid whitesmoke; }
 .datepicker .heading {
   height: 32px;
   position: relative; }
@@ -44,6 +55,7 @@
 .timepicker {
   margin-bottom: 24px; }
   .timepicker strong {
+    cursor: pointer;
     display: block;
     margin-bottom: 24px;
     position: relative;

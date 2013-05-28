@@ -28,6 +28,19 @@
                    background: $gray;
                }
             }
+            &.marked:after {
+                border-bottom: 6px solid $gray;
+                border-left: 6px solid transparent;
+                content: '';
+                display: inline-block;
+                height: 0;
+                margin-top: 18px;
+                position: absolute;
+                width: 0;
+            }
+            &.selected.marked:after {
+                border-bottom: 6px solid $white;
+            }
         }
     }
     .heading {
@@ -65,6 +78,7 @@
 .timepicker {
     margin-bottom: 24px;
     strong {
+        cursor: pointer;
         display: block;
         margin-bottom: 24px;
         position: relative;

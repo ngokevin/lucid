@@ -31,7 +31,10 @@
     </thead>
     <tbody>
       <tr ng-repeat="week in weeks">
-        <td ng-class="{'selected': selectedDate.toDateString() == date.toDateString()}"
+        <td ng-class="{
+              'selected': selectedDate.toDateString() == date.toDateString(),
+              'marked': containsSleep(date)
+            }"
             ng-click="selectDate(date)" ng-repeat="date in week">
           {{ date | date:'d' }}
         </td>
@@ -41,7 +44,7 @@
 </div>
 
 <div class="timepicker">
-  <strong>
+  <strong ng-click="toggleDatePicker()">
     <img class="icon small dark" src="img/today.png">
     {{ selectedDate | date:'longDate' }}
   </strong>
