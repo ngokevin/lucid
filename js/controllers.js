@@ -19,6 +19,22 @@ angular.module('LucidApp')
         }
         chart.changeDays(days);
     });
+
+    $scope.recording = null;
+    $scope.toggleRecord = function() {
+        if ($scope.recording === null) {
+            // Start recording sleep.
+            $scope.recording = new Date();
+        } else {
+            // Log sleep.
+            $scope.entries = EntryService.add({
+                sleep: $scope.recording,
+                wake: new Date()
+            });
+            $scope.recording = null;
+            chart.refresh();
+        }
+    };
 }])
 
 

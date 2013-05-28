@@ -16,4 +16,9 @@
   <span class="btn">Stats</span>
 </div>
 
-<div class="record btn"><span>Sleep</span></div>
+<div ng-click="toggleRecord()" class="record btn">
+  <span ng-class="{'awake': !recording}">
+    <img ng-show="recording" class="sleeping" src="img/stop.png">
+    {{ recording && 'Recording Sleep...' || 'Record Sleep' }}
+  </span>
+</div>

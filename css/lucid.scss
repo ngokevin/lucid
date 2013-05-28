@@ -122,6 +122,22 @@ img.icon {
     &:hover {
         background: $gray;
     }
+    .awake:before {
+        background: $red;
+        border-radius: 20px;
+        content: '';
+        display: inline-block;
+        height: 16px;
+        position: relative;
+        top: 2px;
+        width: 16px;
+    }
+    img.sleeping {
+        height: 16px;
+        position: relative;
+        top: 2px;
+        width: 16px;
+    }
 }
 
 .entry {

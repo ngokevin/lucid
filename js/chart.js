@@ -47,13 +47,6 @@ var PeriodBarChart = function() {
     };
 
 
-    function changeDays(days) {
-        $(element + ' svg').remove();
-        cfg.xAxis.days = days;
-        periodBarChart(element, rawData);
-    }
-
-
     function clean(data) {
         // Segments objects with start and end Dates that span over multiple
         // days into separate objects that are contained within a day.
@@ -269,7 +262,8 @@ var PeriodBarChart = function() {
                     // Case where we show every day.
                     modDays = bucketedData.length;
                 }
-                if (getBucketedIndex(d) % Math.floor(modDays / 6) === 0) {
+                if (bucketedData.length <= 7 ||
+                    getBucketedIndex(d) % Math.floor(modDays / 6) === 0) {
                     // Show only about every 7 dates on xAxis.
                     return d.sleep.getMonth() + 1 + '-' + d.sleep.getDate();
                 }
@@ -301,6 +295,18 @@ var PeriodBarChart = function() {
                 }
                 return hour;
             });
+    }
+
+
+    function changeDays(days) {
+        cfg.xAxis.days = days;
+        refresh();
+    }
+
+
+    function refresh() {
+        $(element + ' svg').remove();
+        periodBarChart(element, rawData);
     }
 
 
@@ -338,6 +344,7 @@ var PeriodBarChart = function() {
 
     return {
         'periodBarChart': periodBarChart,
-        'changeDays': changeDays
+        'changeDays': changeDays,
+        'refresh': refresh
     };
 };

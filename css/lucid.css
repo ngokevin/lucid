@@ -96,6 +96,20 @@ img.icon {
   padding: 8px 0; }
   .record:hover {
     background: #646464; }
+  .record .awake:before {
+    background: #c81e1e;
+    border-radius: 20px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    position: relative;
+    top: 2px;
+    width: 16px; }
+  .record img.sleeping {
+    height: 16px;
+    position: relative;
+    top: 2px;
+    width: 16px; }
 
 .entry {
   margin-bottom: 16px; }
