@@ -20,7 +20,8 @@ var PeriodBarChart = function() {
             width: 300
         },
         rect: {
-            inactiveColor: 'rgb(220, 220, 220)',
+            inactiveNightColor: 'rgb(200, 200, 200)',
+            inactiveDayColor: 'rgb(220, 220, 220)',
             activeColor: '#299283'
         },
         xAxis: {
@@ -166,15 +167,19 @@ var PeriodBarChart = function() {
                   'translate(' + cfg.yAxis.padding + ', ' +
                     0+ ')');
 
-        // Awake bars.
-        var rectWidth = (cfg.chart.width - cfg.yAxis.padding) / bucketedData.length;
-        chartGroup.selectAll('rect.awake')
+        var rectWidth = (cfg.chart.width - cfg.yAxis.padding) /
+                        bucketedData.length;
+
+        // Awake bars, morning.
+        chartGroup.selectAll('rect.awake-morning')
             .data(cfg.data)
             .enter()
             .append('svg:rect')
-            .attr('class', 'awake') .attr('fill', cfg.rect.inactiveColor)
+            .attr('class', 'awake')
+            .attr('fill', cfg.rect.inactiveNightColor)
             .attr('height', function(d, i) {
-                return yScale(DAY_SECS) - yScale(0);
+                // Midnight to 6am.
+                return yScale(6 * 60 * 60);
             })
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
@@ -182,7 +187,48 @@ var PeriodBarChart = function() {
                 return xScale(getBucketedIndex(d));
             })
             .attr('y', function(d, i) {
+                // Midnight.
                 return yScale(0);
+            });
+
+        // Awake bars, day.
+        chartGroup.selectAll('rect.awake-day')
+            .data(cfg.data)
+            .enter()
+            .append('svg:rect')
+            .attr('fill', cfg.rect.inactiveDayColor)
+            .attr('height', function(d, i) {
+                // 6am to 6pm.
+                return yScale(12 * 60 * 60);
+            })
+            .attr('opacity', cfg.rect.opacity)
+            .attr('width', rectWidth)
+            .attr('x', function(d, i) {
+                return xScale(getBucketedIndex(d));
+            })
+            .attr('y', function(d, i) {
+                // 6am.
+                return yScale(6 * 60 * 60);
+            });
+
+        // Awake bars, night.
+        chartGroup.selectAll('rect.awake-night')
+            .data(cfg.data)
+            .enter()
+            .append('svg:rect')
+            .attr('fill', cfg.rect.inactiveNightColor)
+            .attr('height', function(d, i) {
+                // 6pm to Midnight.
+                return yScale(4 * 60 * 60);
+            })
+            .attr('opacity', cfg.rect.opacity)
+            .attr('width', rectWidth)
+            .attr('x', function(d, i) {
+                return xScale(getBucketedIndex(d));
+            })
+            .attr('y', function(d, i) {
+                // 6pm.
+                return yScale(18 * 60 * 60);
             });
 
         // Sleep bars.
@@ -239,7 +285,7 @@ var PeriodBarChart = function() {
             .attr('font-size', cfg.chart.fontSize + 'px')
             .attr('x', cfg.chart.axisPadding)
             .attr('y', function(d) {
-                return yScale(d) + cfg.chart.fontSize / 2;
+                return yScale(d) + cfg.chart.fontSize / 2 - 1;
             })
             .text(function(d, i) {
                 var hour = d / 60 / 60;
