@@ -216,7 +216,7 @@ var PeriodBarChart = function() {
             .attr('fill', cfg.rect.inactiveNightColor)
             .attr('height', function(d, i) {
                 // 6pm to Midnight.
-                return yScale(4 * 60 * 60);
+                return yScale(4 * 60 * 60) + 2;
             })
             .attr('opacity', cfg.rect.opacity)
             .attr('width', rectWidth)
