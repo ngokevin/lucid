@@ -50,24 +50,29 @@ var PeriodBarChart = function() {
     function clean(data) {
         // Segments objects with start and end Dates that span over multiple
         // days into separate objects that are contained within a day.
+        var entries = [];
         var entry, midnight;
+
         for (var i = 0; i < data.length; i++) {
             entry = data[i];
             if (entry.sleep.getDate() == entry.wake.getDate() ||
                 (entry.wake.getHours() === 0 && entry.wake.getMinutes() === 0)) {
                 // Don't need to do anything if sleep and wake on same day.
+                entries.push(entry);
                 continue;
             }
 
+            // TODO: Case where someone falls into a multi-day coma.
             midnight = new Date(entry.wake.getTime());
             midnight.setHours(0, 0);
-            data.push({
+            entries.push({
                 sleep: midnight,
                 wake: new Date(entry.wake.getTime())
             });
             entry.wake = midnight;
+            entries.splice(entries.length - 1, entries, entry);
         }
-        return data;
+        return entries;
     }
 
 
@@ -190,8 +195,7 @@ var PeriodBarChart = function() {
             .enter()
             .append('svg:rect')
             .attr('fill', cfg.rect.inactiveDayColor)
-            .attr('height', function(d, i) {
-                // 6am to 6pm.
+            .attr('height', function(d, i) {// 6am to 6pm.
                 return yScale(12 * 60 * 60);
             })
             .attr('opacity', cfg.rect.opacity)
