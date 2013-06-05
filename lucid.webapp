@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "name": "Lucid",
-  "description": "Sleep tracker to visualize your sleeping patterns."
+  "description": "Sleep tracker to visualize your sleeping patterns.",
   "launch_path": "/",
   "icons": {
     "16": "/img/icon-16.png",
