@@ -44,10 +44,13 @@
 </div>
 
 <div class="timepicker">
-  <strong ng-click="toggleDatePicker()">
-    <img class="icon small dark" src="img/today.png">
-    {{ selectedDate | date:'longDate' }}
-  </strong>
+  <div class="date">
+    <img ng-click="changeDate(-1)" class="icon small" src="img/back.png">
+    <strong ng-click="toggleDatePicker()">
+      {{ selectedDate | date:'longDate' }}
+    </strong>
+    <img ng-click="changeDate(1)" class="icon small" src="img/forward.png">
+  </div>
 
   <span ng-click="incHour()" class="btn time">{{ hour | pad:2 }}</span>:
   <span ng-click="incMinute()" class="btn time">{{ minute | pad:2 }}</span>

@@ -66,6 +66,11 @@ angular.module('LucidApp')
             sleep: sleepDate,
             wake: wakeDate
         });
+
+        $('.datepicker').slideUp();
+            setTimeout(function() {
+                $('.entries').show();
+            }, 400);
     };
 
     buildCalendar();
@@ -94,6 +99,10 @@ angular.module('LucidApp')
             date.setDate(date.getDate() + 1);
         }
     }
+
+    $scope.changeDate = function(direction) {
+        $scope.date.setDate($scope.date.getDate() + direction);
+    };
 
     $scope.changeMonth = function(direction) {
         var month = $scope.date.getMonth();
