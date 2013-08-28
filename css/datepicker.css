@@ -125,3 +125,24 @@
       border-top: 1px solid whitesmoke;
       border-bottom: 1px solid whitesmoke;
       padding: 15px 8px; }
+
+@media (min-width: 360px) {
+  .datepicker table td {
+    padding: 15px; } }
+@media (min-width: 768px) {
+  .datepicker table td {
+    padding: 20px; }
+  .datepicker .heading .month {
+    left: 200px; }
+  .datepicker .heading .year {
+    right: 200px; } }
+@media (min-width: 980px) {
+  .datepicker .heading .month {
+    left: 310px; }
+  .datepicker .heading .year {
+    right: 310px; } }
+@media (min-width: 1280px) {
+  .datepicker .heading .month {
+    left: 450px; }
+  .datepicker .heading .year {
+    right: 450px; } }

@@ -13,11 +13,11 @@ var PeriodBarChart = function() {
             axisPadding: 3,
             fontColor: 'rgb(245, 245, 245)',
             fontSize: '12',
-            height: 240,
+            height: $('.chart').height(),
             opacity: '.95',
             topPadding: 15,
             title: 'Sleep Chart',
-            width: 300
+            width: $('.chart').width()
         },
         rect: {
             inactiveNightColor: 'rgb(200, 200, 200)',

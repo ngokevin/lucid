@@ -159,3 +159,45 @@
         }
     }
 }
+
+@media (min-width:360px) {
+    .datepicker table td {
+        padding: 15px;
+    }
+}
+
+@media (min-width:768px) {
+    .datepicker {
+        table td {
+            padding: 20px;
+        }
+        .heading .month {
+            left: 200px;
+        }
+        .heading .year {
+            right: 200px;
+        }
+    }
+}
+
+@media (min-width:980px) {
+    .datepicker {
+        .heading .month {
+            left: 310px;
+        }
+        .heading .year {
+            right: 310px;
+        }
+    }
+}
+
+@media (min-width:1280px) {
+    .datepicker {
+        .heading .month {
+            left: 450px;
+        }
+        .heading .year {
+            right: 450px;
+        }
+    }
+}

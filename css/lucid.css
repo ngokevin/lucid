@@ -1,15 +1,22 @@
 html {
   background: gainsboro;
-  color: #050505; }
+  color: #050505;
+  height: 100%;
+  width: 100%; }
 
 body {
   background: whitesmoke;
   border-radius: 2px;
-  height: 460px;
+  height: 100%;
   margin: 0 auto;
   position: relative;
-  width: 320px;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
+
+div.main {
+  height: 100%;
+  margin-top: 2%;
+  width: 100%; }
 
 .btn:hover {
   background: gainsboro;
@@ -63,12 +70,13 @@ img.icon {
 .chart-filters {
   margin: 0 auto;
   height: 16px;
-  position: relative;
-  width: 300px; }
+  position: absolute;
+  top: 50px;
+  right: 4%; }
   .chart-filters .chart-tabs {
-    position: absolute;
+    position: relative;
     right: -1px;
-    top: 9px; }
+    top: 10px; }
     .chart-filters .chart-tabs span {
       border-radius: 2px 2px 0 0;
       border-top: 1px solid #050505;
@@ -84,16 +92,17 @@ img.icon {
   background: #646464;
   border: 1px #373737 solid;
   border-radius: 2px;
-  height: 240px;
-  margin: 16px auto 16px;
-  width: 300px; }
+  height: 50%;
+  margin: 44px auto 16px;
+  position: relative;
+  width: 93.75%; }
 
 .empty-msg {
   color: gainsboro;
   font-style: italic;
   position: absolute;
-  right: 20px;
-  top: 197px; }
+  right: 10%;
+  top: 46%; }
 
 .chart-switches {
   margin-bottom: 24px; }
