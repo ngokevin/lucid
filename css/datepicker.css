@@ -1,14 +1,14 @@
 .edit.toggle-picker {
   position: absolute;
   right: 10px;
-  top: 3px; }
+  top: 1px; }
 
 .datepicker table {
   margin: 0 auto 8px;
   text-align: center; }
   .datepicker table td {
     border-radius: 2px;
-    padding: 7px; }
+    padding: 6px; }
     .datepicker table td:hover, .datepicker table td.selected {
       cursor: pointer; }
     .datepicker table td:hover {

@@ -4,7 +4,7 @@
 .edit.toggle-picker {
     position: absolute;
     right: 10px;
-    top: 3px;
+    top: 1px;
 }
 
 
@@ -14,7 +14,7 @@
         text-align: center;
         td {
             border-radius: 2px;
-            padding: 7px;
+            padding: 6px;
             &:hover, &.selected {
                cursor: pointer;
             }
