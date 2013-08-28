@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.4",
   "name": "Lucid",
   "description": "Sleep tracker to visualize your sleeping patterns.",
   "launch_path": "/",
@@ -13,8 +13,9 @@
     "name": "Kevin Ngo",
     "url": "http://ngokevin.com"
   },
-  "appcache_path": "/.cache.manifest",
+  "appcache_path": "/.lucid.appcache",
   "installs_allowed_from": [
+    "http://marketplace.mozilla.org",
     "https://marketplace.firefox.com"
   ],
   "locales": {
