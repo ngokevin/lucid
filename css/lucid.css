@@ -94,7 +94,7 @@ img.icon {
   border-radius: 2px;
   height: 50%;
   left: 3.125%;
-  margin: 28px auto 0;
+  margin: 24px auto 0;
   position: absolute;
   width: 93.75%; }
 
@@ -146,3 +146,10 @@ img.icon {
 
 .c {
   zoom: 1; }
+
+@media (min-width: 800px) {
+  .chart {
+    margin-top: 23px; } }
+@media (min-width: 1080px) {
+  .chart {
+    margin-top: 20px; } }
