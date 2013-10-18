@@ -55,6 +55,8 @@ angular.module('LucidApp')
         var hour = $scope.hour;
         if ($scope.meridiem == 'pm') {
             hour += 12;
+        } else if ($scope.meridiem == 'am' && hour == 12) {
+            hour = 0;
         }
         sleepDate.setHours(hour, $scope.minute);
 
